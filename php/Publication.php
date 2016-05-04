@@ -163,28 +163,28 @@ $publication = new Publication();
 $action = $_REQUEST['action'];
 if($action == 'getAll'){
     $var = json_encode($publication->getAllPublications());
-    print_r($var);
+    echo $var;
 }
 if($action== 'getMy'){
     $var = json_encode($publication->getMyPublications());
-    print_r($var);
+    echo $var;
 }
 if($action == 'getFriendPublication'){
     $var = json_encode($publication->getFriendPublications());
-    print_r($var);
+    echo $var;
 }
 if($action == 'insert'){
     //http://localhost:81/database%20scripts/Person.php?action=insert&fName=yorbi&lName=mendez&id=207160775&user=yorbigmendez&pass=1234&email=ymenderz&admission=1993-09-30&typeUser=admin&gender=Male
     $publication->insertPublication($_REQUEST['language_name'], $_REQUEST['publication_name'], $_REQUEST['description'], $_REQUEST['code']);
     $var = json_encode($publication->getMyPublications());
-    print_r($var);
+    echo $var;
 }
 
 if($action == 'edit'){
     //Get the Post
     $publication->editPublication($_REQUEST['language_name'], $_REQUEST['publication_name'],$_REQUEST['description'],$_REQUEST['code']);
     $var = json_encode($publication->getAllPublications());
-    print_r($var);
+    echo $var;
 }
 
 ?>
