@@ -356,7 +356,7 @@
 
                             <div class="col-lg-8">
                                 <div class="row">
-                                    <div class>
+                                    <div class="col-lg-12">
                                         <form role="form">
 
 
@@ -372,6 +372,9 @@
                                             </div>
 
                                         </form>
+                                    </div>
+                                    <div class="col-lg-12 pubsHere">
+
                                     </div>
 
                                 </div>
