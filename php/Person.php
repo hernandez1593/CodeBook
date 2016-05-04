@@ -76,7 +76,7 @@ class Person{
         $arr = [];
         $query = "select * from person where lower(CONCAT(first_name,last_name)) like lower('%$name%')";
         $result = pg_query($conn, $query) or die ("Error while getting User Type");
-        while($row = mysql_fetch_assoc($result)) {
+        while($row = pg_fetch_assoc($result)) {
             //Fetch all the forumns
             $forum_arr = [];
             $id = $row['id_person'];
@@ -145,26 +145,27 @@ $person = new Person();
 
 if($_REQUEST['action'] == 'get'){
     $var = json_encode($person->getPersons());
-    print_r($var);
+     echo $var ;
 }
 if($_REQUEST['action'] == 'getuser'){
-    $var = json_encode($person->getUser($_REQUEST['name']));
-    print_r($var);
+    $var = json_encode($person->getUser($_REQUEST['name']));//
+    echo $var;
+
 }
 if($_REQUEST['action'] == 'remove'){
     $person->removePerson($_REQUEST['id']);
     $var = json_encode($person->getPersons());
-    print_r($var);
+    echo $var;
 }
 if($_REQUEST['action'] == 'insert'){
     //http://localhost:81/database%20scripts/Person.php?action=insert&fName=yorbi&lName=mendez&id=207160775&user=yorbigmendez&pass=1234&email=ymenderz&admission=1993-09-30&typeUser=admin&gender=Male
     $person->insertPerson($_REQUEST['fName'], $_REQUEST['lName'],$_REQUEST['id'],$_REQUEST['user'],md5($_REQUEST['pass']),$_REQUEST['email'],$_REQUEST['admission'],$_REQUEST['typeUser'],$_REQUEST['gender']);
     $var = json_encode($person->getPersons());
-    print_r($var);
+    echo $var;
 }
 
 if($_REQUEST['action'] == 'edit'){
     $person->editPerson($_REQUEST['fName'], $_REQUEST['lName'],$_REQUEST['id'],$_REQUEST['user'],md5($_REQUEST['pass']),$_REQUEST['email'],$_REQUEST['admission'],$_REQUEST['typeUser'],$_REQUEST['gender']);
     $var = json_encode($person->getPersons());
-    print_r($var);
+     echo $var ;
 }
