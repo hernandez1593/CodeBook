@@ -390,7 +390,7 @@
                                                             <h3>hola </h3>
                                                         </div>
                                                         <div class="panel-body">
-                                                            <h4><?php echo $changa;?></h4>
+                                                            <h4></h4>
                                                         </div>
                                                     </div>
 
