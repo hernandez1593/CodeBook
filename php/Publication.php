@@ -15,13 +15,15 @@ class Publication{
             //Get user id from session
             $rowUser = $_SESSION["rowUser"];
             $id_person = $rowUser['id'];
+            echo $id_person;
             $getLanguageQuery = "select id_language from program_language where language_name = '$language_name'";
             $id_language = pg_query($conn, $getLanguageQuery) or die("Consult Error");
             $row = pg_fetch_row($id_language);
+            echo $row[0];
             //Query the insert to publication
             $query = "insert into publication (id_language, id_person, publication_name , description, code)
                      values ('$row[0]','$id_person', '$publication_name','$descrip','$code');";
-            echo $query;
+            //echo $query;
             $result = pg_query($conn, $query) or die("Consult Error");
         }else{
             echo "Error due to the fact that ";
@@ -74,7 +76,7 @@ class Publication{
                             'code'=>$row['code']
                           );
             }
-            return $arr;
+            echo json_encode($arr);
         }else{
             echo "Error due to the fact that ";
         }
@@ -107,7 +109,7 @@ class Publication{
                             'code'=>$row['code']
                           );
             }
-            return $arr;
+            echo json_encode($arr);
         }else{
             echo "Error due to the fact that ";
         }
@@ -132,7 +134,7 @@ class Publication{
                         'code'=>$row['code']
                       );
         }
-            return $arr;
+            echo json_encode($arr);
         }
 
 
@@ -161,30 +163,25 @@ class Publication{
 //Set the instance
 $publication = new Publication();
 $action = $_REQUEST['action'];
+
 if($action == 'getAll'){
-    $var = json_encode($publication->getAllPublications());
-    echo $var;
+    $publication->getAllPublications();
 }
 if($action== 'getMy'){
-    $var = json_encode($publication->getMyPublications());
-    echo $var;
+    $publication->getMyPublications();
 }
 if($action == 'getFriendPublication'){
-    $var = json_encode($publication->getFriendPublications());
-    echo $var;
+    $publication->getFriendPublications();
 }
 if($action == 'insert'){
     //http://localhost:81/database%20scripts/Person.php?action=insert&fName=yorbi&lName=mendez&id=207160775&user=yorbigmendez&pass=1234&email=ymenderz&admission=1993-09-30&typeUser=admin&gender=Male
     $publication->insertPublication($_REQUEST['language_name'], $_REQUEST['publication_name'], $_REQUEST['description'], $_REQUEST['code']);
-    $var = json_encode($publication->getMyPublications());
-    echo $var;
 }
 
 if($action == 'edit'){
     //Get the Post
     $publication->editPublication($_REQUEST['language_name'], $_REQUEST['publication_name'],$_REQUEST['description'],$_REQUEST['code']);
-    $var = json_encode($publication->getAllPublications());
-    echo $var;
+    $publication->getAllPublications();
 }
 
 ?>

@@ -4,17 +4,17 @@
     {
         $rowUser = $_SESSION["rowUser"];
         $nombreUsuario = "{$rowUser['fName']} {$rowUser['lName']}";
-
         //$imageName = md5($rowUser[4]);
         //$routeImage = "http://localhost/usuariosGitBook/$imageName";
 
+        $changa = json_encode($rowUser['publication']);
         $company = "";
         /*f (isset($_SESSION["rowCompany"]))
         {
             $company = $_SESSION["rowCompany"][1];
         }
         */
-        //echo $rowUser['fName'];
+        //echo $rowUser;
 
 ?>
 
@@ -40,13 +40,14 @@
 
         <!-- Custom Fonts -->
         <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+        <script type="text/javascript" src="../js/principal.js"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 
     </head>
 
@@ -373,7 +374,33 @@
 
                                         </form>
                                     </div>
-                                    <div class="col-lg-12 pubsHere">
+                                    <div class="col-lg-12 pubsHere" onclick="cargarPublicaciones(<?php echo $changa; ?>)">
+                                        <div class="container-fluid">
+                                            <div class="col-lg-12">
+                                                <h2>Mis publicaciones</h2>
+
+
+                                            </div>
+
+
+                                            <div class="col-lg-12 myPubs">
+                                                <div class="col-lg-12">
+                                                    <div class="panel panel-info">
+                                                        <div class="panel-heading">
+                                                            <h3>hola</h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <h4><?php echo $changa;?></h4>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+
+
+                                        </div>
 
                                     </div>
 
