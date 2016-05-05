@@ -387,7 +387,7 @@
                                                 <div class="col-lg-12">
                                                     <div class="panel panel-info">
                                                         <div class="panel-heading">
-                                                            <h3>hola</h3>
+                                                            <h3>hola </h3>
                                                         </div>
                                                         <div class="panel-body">
                                                             <h4><?php echo $changa;?></h4>
