@@ -9,6 +9,8 @@
 
         $changa = json_encode($rowUser['publication']);
         $company = "";
+        $imageName = md5($rowUser[4]);
+        $routeImage = "http://localhost:81/webProyecto/$imageName";
         /*f (isset($_SESSION["rowCompany"]))
         {
             $company = $_SESSION["rowCompany"][1];
@@ -175,10 +177,10 @@
                             <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Perfil</a>
                         </li>
                         <li>
-                            <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Publicaciones Amigos</a>
+                            <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Publicaciones</a>
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-fw fa-table"></i> Buscar Amigos</a>
+                            <a href="../views/friends.php"><i class="fa fa-fw fa-table"></i> Amigos</a>
                         </li>
                         <li class="active">
                             <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
@@ -194,11 +196,11 @@
 
             <div id="page-wrapper">
 
-                <div class="container-fluid">
+                <div class="container-fluid contenido">
 
                     <!-- Page Heading -->
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-md-12">
                             <h1 class="page-header">
                             Perfil
                         </h1>
@@ -207,17 +209,23 @@
                     <!-- /.row   aqui pegar el perfil.html-->
                     <form action="">
                         <div class="row">
-                            <div class="col-lg-1">
+                            <div class="col-md-1">
                                 <img src="../images/teddy.png" class="img-thumbnail img-responsive" style="wi" alt="">
                                 <button type="button" class="btn btn-primary center">
                                     <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span> Subir Imagen
                                 </button>
+                                <form id="form-image"method="post" action="../php/Person.php/action=uploadimg" enctype="multipart/form-data">
+                                    <div id="input" class="button be-green white lato" onclick="getFile()">Seleccione una foto</div>
+                                    <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
+                                        <input name='imagen' id="upfile" type="file" value="upload" onchange="subirImagen();"/>
+                                    </div>
+                                </form>
 
 
                             </div>
-                            <div class="col-lg-11">
+                            <div class="col-md-11">
                                 <div class="row">
-                                    <div class="col-lg-6 text-center">
+                                    <div class="col-md-6 text-center">
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <div class="mostrar">
@@ -238,7 +246,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 text-center">
+                                    <div class="col-md-6 text-center">
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <div class="mostrar">
@@ -257,9 +265,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-11">
+                            <div class="col-md-11">
                                 <div class="row">
-                                    <div class="col-lg-6 text-center">
+                                    <div class="col-md-6 text-center">
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <div class="mostrar">
@@ -278,7 +286,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 text-center">
+                                    <div class="col-md-6 text-center">
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <div class="mostrar">
@@ -296,19 +304,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-1">
-                                <button type="button" class="btn btn-default btn-lg">
+                            <div class="col-md-1">
+                                <button type="button" class="btn btn-default btn-md">
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
                                 </button>
-                                <button type="button" class="btn btn-default btn-lg">
+                                <button type="button" class="btn btn-default btn-md">
                                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
                                 </button>
 
 
                             </div>
-                            <div class=" col-lg-11">
+                            <div class=" col-md-11">
                                 <div class="row">
-                                    <div class="col-lg-6 text-center">
+                                    <div class="col-md-6 text-center">
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <div class="mostrar">
@@ -326,7 +334,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 text-center">
+                                    <div class="col-md-6 text-center">
                                         <div class="panel panel-default">
                                             <div class="panel-body">
                                                 <div class="mostrar">
@@ -355,9 +363,9 @@
 
                         <div class="row">
 
-                            <div class="col-lg-8">
+                            <div class="col-md-8">
                                 <div class="row">
-                                    <div class="col-lg-12">
+                                    <div class="col-md-12">
                                         <form role="form">
 
 
@@ -374,23 +382,23 @@
 
                                         </form>
                                     </div>
-                                    <div class="col-lg-12 pubsHere" onclick="cargarPublicaciones(<?php echo $changa; ?>)">
+                                    <div class="col-md-12 pubsHere" onclick="cargarPublicaciones(<?php echo $changa; ?>)">
                                         <div class="container-fluid">
-                                            <div class="col-lg-12">
+                                            <div class="col-md-12">
                                                 <h2>Mis publicaciones</h2>
 
 
                                             </div>
 
 
-                                            <div class="col-lg-12 myPubs">
-                                                <div class="col-lg-12">
+                                            <div class="col-md-12 myPubs">
+                                                <div class="col-md-12">
                                                     <div class="panel panel-info">
                                                         <div class="panel-heading">
                                                             <h3>hola </h3>
                                                         </div>
                                                         <div class="panel-body">
-                                                            <h4><?php echo $changa;?></h4>
+                                                            <h4></h4>
                                                         </div>
                                                     </div>
 
@@ -408,7 +416,7 @@
 
 
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-md-4">
 
 
 

@@ -1,16 +1,21 @@
-<<<<<<< HEAD
+function getFile()
+{
+   document.getElementById("upfile").click();
+}
+
+function subirImagen()
+{
+    document.getElementById("form-image").submit();
+}
+
+
 //Used to make validations about the txt inserted in search friends
-function validateSearch(){
-=======
 function validateSearch() {
->>>>>>> originYorbi/master
     var name = document.getElementById('box-search-name').value;
 
     if (name != "") {
         loadSearchedUsers(name);
-<<<<<<< HEAD
     }else{
-=======
         /*
         var ur = $('#form-search').attr('action');
         var met = $('#from-search').attr('method');
@@ -33,9 +38,7 @@ function validateSearch() {
 
         });
         */
-    } else {
->>>>>>> originYorbi/master
-        var error = document.getElementById('error-search');
+         var error = document.getElementById('error-search');
         $('#error-search').removeClass('hide-me');
     }
 }
@@ -79,3 +82,9 @@ function loadSearchedUsers(name) {
     };
     xhttp.send();
 }
+
+$('.grid').masonry({
+  itemSelector: '.grid-item',
+  columnWidth: 100,
+});
+
