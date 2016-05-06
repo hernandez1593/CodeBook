@@ -62,8 +62,6 @@ if (pg_num_rows($result) > 0)
     echo $arr;
     $_SESSION["rowUser"] = $arr[0];
     header('Location: /webProyecto/views/principal.php');
-
-
 }
 else{
     echo "false";

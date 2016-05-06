@@ -1,4 +1,5 @@
 <?php
+    echo 'I am here';
     session_start();
     if (isset( $_SESSION["rowUser"]))
     {

@@ -7,10 +7,10 @@
         //$imageName = md5($rowUser[4]);
         //$routeImage = "http://localhost/usuariosGitBook/$imageName";
 
-        $changa = json_encode($rowUser['publication']);
+        $changa = $rowUser['publication'];
         $company = "";
-        $imageName = md5($rowUser['img_name']);
-        $routeImage = "/php/$imageName";
+        $imageName = $rowUser['img_name'];
+        $routeImage = "/$imageName";
 
         /*f (isset($_SESSION["rowCompany"]))
         {
@@ -44,6 +44,7 @@
         <!-- Custom Fonts -->
         <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="../js/principal.js"></script>
+        </script><script src="../js/perfil.js"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -212,11 +213,11 @@
 
                         <div class="col-md-2">
 
-                            <p><img id="imagen" src="<?php echo $routeImage;?>" accept="image/jpeg, image/png" width="100%" height="25%"></p>
-                                <form id="form-image"method="post" action="../php/uploadImage.php" enctype="multipart/form-data">
+                            <p><img id="imagen" src="../images<?php echo $routeImage;?>" accept="image/jpeg, image/png" width="100%" height="25%"></p>
+                                <form id="form-image"method="post" action="/php/uploadImage.php" enctype="multipart/form-data">
                                     <div id="input" class="button be-green white lato" onclick="getFile()">Seleccione una foto</div>
                                     <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
-                                        <input name='imagen' id="upfile" type="file" value="upload" onchange="subirImagen();"/>
+                                        <input name='imagen' id="upfile" type="file" value="upload" onchange="uploadImage();"/>
                                     </div>
                                 </form>
 
@@ -446,7 +447,6 @@
 
         <!-- jQuery -->
         <script src="../js/jquery.js">
-        </script><script src="../js/perfil.js"></script>
 
         <!-- Bootstrap Core JavaScript -->
         <script src="../js/bootstrap.min.js"></script>

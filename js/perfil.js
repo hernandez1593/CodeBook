@@ -3,7 +3,7 @@ function getFile()
    document.getElementById("upfile").click();
 }
 
-function subirImagen()
+function uploadImage()
 {
     document.getElementById("form-image").submit();
 }
@@ -18,7 +18,6 @@ function loadSearchedUsers(name) {
             var space = document.getElementById('add-friend');
             //var respuestaJSON = xhttp.responseText;
             console.log(xhttp.responseText);
-            console.log("HOLA");
             //var respuestaJSON = JSON.parse(xhttp.responseText);
             //console.log(typeof(respuestaJSON));
             //console.log(respuestaJSON);
