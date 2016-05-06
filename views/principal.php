@@ -87,7 +87,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">SB Admin</a>
+                    <a class="navbar-brand" >Acerca de</a>
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
@@ -214,12 +214,12 @@
                 <!-- /.navbar-collapse -->
             </nav>
 
-            <div id="page-wrapper">
+            <div id="content1">
 
-                <div class="container-fluid contenido">
+                <div class="contenido">
 
                     <!-- Page Heading -->
-                    <div class="row">
+                    <div class="row indent">
                         <div class="col-md-12">
                             <h1 class="page-header">
                             Perfil
@@ -230,14 +230,17 @@
                     <div class="row">
 
                         <div class="col-md-2">
-
-                            <p><?php echo $routeImage;?></p>
-                                <form id="form-image"method="post" action="../php/uploadImage.php" enctype="multipart/form-data">
-                                    <div id="input" class="button be-green white lato" onclick="getFile()">Seleccione una foto</div>
-                                    <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
-                                        <input name='imagen' id="upfile" type="file" value="upload" onchange="uploadImage();"/>
-                                    </div>
-                                </form>
+                            <div class="row">
+                                <div class="col-md-12">
+                                <p><?php echo $routeImage;?></p>
+                                    <form id="form-image"method="post" action="../php/uploadImage.php" enctype="multipart/form-data">
+                                        <div id="input" class="button be-green white lato" onclick="getFile()">Seleccione una foto</div>
+                                        <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
+                                            <input name='imagen' id="upfile" type="file" value="upload" onchange="uploadImage();"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
 
                         </div>
                         <div class="col-md-10">
