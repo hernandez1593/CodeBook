@@ -28,7 +28,7 @@
                 <div id="add-friend" class="panel-body text-center">
                     <form  id="form-search'"   method="POST">
                         <input id="box-search-name" class="from-control input-lg" type="text" name="name" placeholder="Name">
-                        <button type ="button" class = "btn btn-primary btn-lg" onclick="validateSearch();">
+                        <button type ="button" class = "btn btn-primary btn-lg" onclick="return validateSearch();">
                         <span class="glyphicon glyphicon-search"></span> Search
                         </button>
                     </form>

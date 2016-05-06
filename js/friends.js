@@ -9,6 +9,13 @@ function uploadImage()
     document.getElementById("form-image").submit();
 }
 
+function validateSearch(){
+    var name = document.getElementById('box-search-name').value;
+    console.log(name);
+    if(name != ""){
+        loadSearchedUsers(name);
+    }
+}
 function obtenerXHR() {
     req = false;
     if (window.XMLHttpRequest) {
@@ -34,6 +41,7 @@ function loadSearchedUsers(name) {
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
             //Space to insert divs and shit
+            console.log('Inserted here');
             var space = document.getElementById('add-friend');
             //var respuestaJSON = xhttp.responseText;
             console.log(xhttp.responseText);
