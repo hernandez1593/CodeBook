@@ -1,5 +1,9 @@
 <?php
     session_start();
+
+    //chmod("/php/", 0755);
+    //cho substr(sprintf('%o', fileperms('../PHP'), -4);
+
     if (isset( $_SESSION["rowUser"]))
     {
         $rowUser = $_SESSION["rowUser"];
@@ -7,10 +11,25 @@
         //$imageName = md5($rowUser[4]);
         //$routeImage = "http://localhost/usuariosGitBook/$imageName";
 
-       // $changa = json_decode($rowUser['publication']);
+        //echo $row['publication'];
+        foreach($rowUser["publication"] as $game) {
+           foreach ($game as $key => $value) {
+              $changa =  $value;
+           }
+        }
+        //$changa = json_decode($rowUser['publication']);
         $company = "";
         $imageName = $rowUser['img_name'];
-        $routeImage = "/$imageName";
+
+        $dir = "../images/";
+        if($opendir = opendir($dir)){
+            while(($file = readdir($opendir)) != FALSE){
+                if($file!="." && $file!=".."){
+                    $routeImage = "<img src='$dir/$file'><br>";
+                }
+            }
+        }
+
 
         /*f (isset($_SESSION["rowCompany"]))
         {
@@ -213,7 +232,7 @@
 
                         <div class="col-md-2">
 
-                            <p><img id="imagen" src="./images<?php echo $routeImage;?>" accept="image/jpeg, image/png" width="100%" height="25%"></p>
+                            <p><?php echo $routeImage;?></p>
                                 <form id="form-image"method="post" action="../php/uploadImage.php" enctype="multipart/form-data">
                                     <div id="input" class="button be-green white lato" onclick="getFile()">Seleccione una foto</div>
                                     <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
