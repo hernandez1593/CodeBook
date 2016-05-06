@@ -1,12 +1,4 @@
-function getFile()
-{
-   document.getElementById("upfile").click();
-}
 
-function subirImagen()
-{
-    document.getElementById("form-image").submit();
-}
 
 
 //Used to make validations about the txt inserted in search friends

@@ -1,4 +1,12 @@
+function getFile()
+{
+   document.getElementById("upfile").click();
+}
 
+function subirImagen()
+{
+    document.getElementById("form-image").submit();
+}
 
 function loadSearchedUsers(name) {
     var xhttp = new obtenerXHR();
