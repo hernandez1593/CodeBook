@@ -1,30 +1,9 @@
+//Used to make validations about the txt inserted in search friends
 function validateSearch(){
     var name = document.getElementById('box-search-name').value;
 
     if(name!=""){
         loadSearchedUsers(name);
-        /*
-        var ur = $('#form-search').attr('action');
-        var met = $('#from-search').attr('method');
-         $.ajax({
-            data: $('#form-search').serialize(),
-            url: ur,
-            type: met,
-            success: function(resp)
-            {
-                var data;
-                var ok = true;
-                console.log(resp);
-                resp = $.parseJSON(resp);
-            },
-            error: function(jqXHR, estado, error)
-            {
-                console.log("Error en la busqueda del usuario.");
-            },
-            timeout: 4000
-
-        });
-        */
     }else{
         var error = document.getElementById('error-search');
         $('#error-search').removeClass('hide-me');
