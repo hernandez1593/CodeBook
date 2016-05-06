@@ -8,8 +8,8 @@ class Person{
     function insertPerson($fName,$lName,$id,$user,$pass,$email,$admission,$typeUser,$gender){
         $connection = new Connection();
         $conn = $connection->getConnection();
-        $query = "insert into person (first_name,last_name,id_person,username,pass,email,admission_date,type_user,gender)
-                 values ('$fName','$lName',$id,'$user','$pass','$email','$admission','$typeUser','$gender');";
+        $query = "insert into person (first_name,last_name,id_person,username,pass,email,admission_date,type_user,gender,img_name)
+                 values ('$fName','$lName',$id,'$user','$pass','$email','$admission','$typeUser','$gender','teddy.png');";
                  echo $query;
         $result = pg_query($conn, $query) or die("Consult Error");
         $_SESSION["rowUser"] = json_encode($result);
@@ -154,7 +154,7 @@ if($_REQUEST['action'] == 'remove'){
 }
 if($_REQUEST['action'] == 'insert'){
     //http://localhost:81/database%20scripts/Person.php?action=insert&fName=yorbi&lName=mendez&id=207160775&user=yorbigmendez&pass=1234&email=ymenderz&admission=1993-09-30&typeUser=admin&gender=Male
-    $person->insert($_REQUEST['lName'], $_REQUEST['id'], $_REQUEST['user'] ,md5($_REQUEST['pass']) ,$_REQUEST['email'],$_REQUEST['admission'],$_REQUEST['typeUser'],$_REQUEST['gender']);
+    $person->insertPerson($_REQUEST['fName'], $_REQUEST['lName'], $_REQUEST['id'], $_REQUEST['user'] ,md5($_REQUEST['pass']) ,$_REQUEST['email'],$_REQUEST['admission'],$_REQUEST['typeUser'],$_REQUEST['gender']);
     $person->getPersons();
 }
 
