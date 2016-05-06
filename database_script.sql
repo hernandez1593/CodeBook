@@ -10,7 +10,7 @@
 CREATE TABLE public.person
 (
   id_person integer NOT NULL,
-  img_name character(150) NULL,
+  img_name character(150),
   first_name character(50),
   last_name character(50),
   username character(50),
@@ -158,9 +158,9 @@ WITH (
 ALTER TABLE public.publication
   OWNER TO postgres;
 --------------------------------------------------------------------------------------------------
-insert into person (first_name,last_name,id_person,username,pass,email,admission_date,type_user,gender)
-values ('Yorbi','Mendez','207160775','ymendez','123','yorbigmendez@gmail.com','1993-08-26','admin','M'),
-('Alejandro','Hernandez','111111111','alejandro','123','alejandro@gmail.com','1993-09-30','admin','M');
+insert into person (first_name,last_name,id_person,username,pass,email,admission_date,type_user,gender,img_name)
+values ('Yorbi','Mendez','207160775','ymendez','123','yorbigmendez@gmail.com','1993-08-26','admin','M','teddy.png'),
+('Alejandro','Hernandez','111111111','alejandro','123','alejandro@gmail.com','1993-09-30','admin','M','teddy.png');
 
 insert into company (id_company,company_name)
 values (1,'Avantica'),(2,'OpenPuerta'),(3,'GAP');
@@ -172,6 +172,7 @@ select * from company;
 select * from person;
 select * from person_company;
 
+select * from person where username = 'ymendez' and pass = '123'
 --Insert program language
 insert into program_language (language_name)
 values ('Javascript'),('PHP'),('Ruby');
