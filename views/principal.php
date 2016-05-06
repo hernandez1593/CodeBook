@@ -6,16 +6,16 @@
 
     if (isset( $_SESSION["rowUser"]))
     {
+
         $rowUser = $_SESSION["rowUser"];
         $nombreUsuario = "{$rowUser['fName']} {$rowUser['lName']}";
         //$imageName = md5($rowUser[4]);
         //$routeImage = "http://localhost/usuariosGitBook/$imageName";
 
         //echo $row['publication'];
-        foreach($rowUser["publication"] as $game) {
-           foreach ($game as $key => $value) {
-              $changa =  $value;
-           }
+        $changa = "";
+        foreach($rowUser["publication"] as $pub) {
+            $changa =  $pub["publication_name"];
         }
         //$changa = json_decode($rowUser['publication']);
         $company = "";
@@ -384,9 +384,10 @@
 
                         <div class="row">
 
-                            <div class="col-md-8">
+                            <div class="col-md-11">
                                 <div class="row">
                                     <div class="col-md-12">
+<!--
                                         <form role="form">
 
 
@@ -402,18 +403,13 @@
                                             </div>
 
                                         </form>
+-->
                                     </div>
-                                    <div class="col-md-12 pubsHere" onclick="cargarPublicaciones(<?php echo $changa; ?>)">
-                                        <div class="container-fluid">
-                                            <div class="col-md-12">
-                                                <h2>Mis publicaciones</h2>
-
-
-                                            </div>
-
-
+                                    <div class="col-md-12 pubsHere">
+                                        <div class="row">
                                             <div class="col-md-12 myPubs">
-                                                <div class="col-md-12">
+                                                <h2>Mis publicaciones</h2>
+                                                <div class="col-md-6">
                                                     <div class="panel panel-info">
                                                         <div class="panel-heading">
                                                             <h3>hola </h3>
@@ -422,23 +418,16 @@
                                                             <h4></h4>
                                                         </div>
                                                     </div>
-
-
-
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <h1>mensajeria</h1>
                                                 </div>
                                             </div>
-
-
                                         </div>
-
                                     </div>
-
                                 </div>
 
 
-                            </div>
-                            <div class="col-md-4">
-                                <h1>mensajeria</h1>
                             </div>
                         </div>
                         <!-- /.row -->
@@ -465,9 +454,25 @@
         <!-- /#wrapper -->
 
         <!-- jQuery -->
-        <script src="../js/jquery.js">
+        <script>
+            var name = document.getElementById('nombrePerfil').value;
+            function reqListener () {
+              console.log(this.responseText);
+            }
 
-        <!-- Bootstrap Core JavaScript -->
+            var oReq = new XMLHttpRequest(); //New request object
+            oReq.onload = function() {
+                //This is where you handle what to do with the response.
+                //The actual data is found on this.responseText
+                alert(this.responseText); //Will alert: 42
+            };
+            oReq.open("get", "../php/Person.php?action=getpublication&name='Yorbi'", true);
+            //                               ^ Don't block the rest of the execution.
+            //                                 Don't wait until the request finishes to
+            //                                 continue.
+            oReq.send();
+        </script>
+        <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.min.js"></script>
 
     </body>

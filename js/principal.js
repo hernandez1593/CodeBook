@@ -62,8 +62,7 @@ function cargarPerfil(user) {
 */
 
 function cargarPublicaciones(data) {
-
-    console.log(data);
+    console.log($data);
     //cargar('myPublication.php', 'pubsHere');
 
     if (peticion.readyState === 4 && peticion.status === 200) // Petición completada
