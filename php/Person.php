@@ -163,8 +163,3 @@ if($_REQUEST['action'] == 'edit'){
     $person->getPersons();
 }
 
-if($_REQUEST['action'] == 'uploadimg'){
-    $person->editPerson($_REQUEST['fName'], $_REQUEST['lName'],$_REQUEST['id'],$_REQUEST['user'],md5($_REQUEST['pass']),$_REQUEST['email'],$_REQUEST['admission'],$_REQUEST['typeUser'],$_REQUEST['gender']);
-    $person->getPersons();
-}
-

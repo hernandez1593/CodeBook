@@ -39,7 +39,7 @@
 
         <!-- Custom CSS -->
         <link href="../css/sb-admin.css" rel="stylesheet">
-
+        <link href="../css/principal.css" rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <script type="text/javascript" src="../js/principal.js"></script>
@@ -211,14 +211,12 @@
                         <div class="row">
                             <div class="col-md-1">
                                 <img src="../images/teddy.png" class="img-thumbnail img-responsive" style="wi" alt="">
-                                <button type="button" class="btn btn-primary center">
-                                    <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span> Subir Imagen
-                                </button>
-                                <form id="form-image"method="post" action="../php/Person.php/action=uploadimg" enctype="multipart/form-data">
+                                <form id="form-image" method="post" action="../php/subirImagen.php" enctype="multipart/form-data">
                                     <div id="input" class="button be-green white lato" onclick="getFile()">Seleccione una foto</div>
                                     <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
-                                        <input name='imagen' id="upfile" type="file" value="upload" onchange="subirImagen();"/>
+                                        <input name='imagen' id="upfile" style="width: 200px;" type="file" value="upload" onchange="subirImagen();"/>
                                     </div>
+                                    <input id="ok" style="height: 0px; width: 0px; display:none;" type="submit" value="ok" />
                                 </form>
 
 
@@ -417,13 +415,7 @@
 
                             </div>
                             <div class="col-md-4">
-
-
-
                                 <h1>mensajeria</h1>
-
-
-
                             </div>
                         </div>
                         <!-- /.row -->

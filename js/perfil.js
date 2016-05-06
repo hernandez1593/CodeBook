@@ -5,7 +5,7 @@ function getFile()
 
 function subirImagen()
 {
-    document.getElementById("form-image").submit();
+    document.getElementById("ok").click();
 }
 
 function loadSearchedUsers(name) {
