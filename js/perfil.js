@@ -29,6 +29,7 @@ function loadSearchedUsers(name) {
                 var div = document.createElement("div");
                 var input = document.createElement("input");
                 input.setAttribute("id", "friend-" + obj[i]['id_person']);
+                //
                 input.setAttribute("class", "input-lg");
                 input.setAttribute("value", obj[i]['fName']);
                 input.setAttribute("readonly", "");
