@@ -9,8 +9,9 @@
 
         $changa = json_encode($rowUser['publication']);
         $company = "";
-        $imageName = md5($rowUser[4]);
-        $routeImage = "http://localhost:81/webProyecto/$imageName";
+        $imageName = md5($rowUser['img_name']);
+        $routeImage = "/php/$imageName";
+
         /*f (isset($_SESSION["rowCompany"]))
         {
             $company = $_SESSION["rowCompany"][1];
@@ -206,21 +207,23 @@
                         </h1>
                         </div>
                     </div>
-                    <!-- /.row   aqui pegar el perfil.html-->
-                    <form action="">
-                        <div class="row">
-                            <div class="col-md-1">
-                                <img src="../images/teddy.png" class="img-thumbnail img-responsive" style="wi" alt="">
-                                <form id="form-image" method="post" action="../php/subirImagen.php" enctype="multipart/form-data">
+
+                    <div class="row">
+
+                        <div class="col-md-2">
+
+                            <p><img id="imagen" src="<?php echo $routeImage;?>" accept="image/jpeg, image/png" width="100%" height="25%"></p>
+                                <form id="form-image"method="post" action="../php/uploadImage.php" enctype="multipart/form-data">
                                     <div id="input" class="button be-green white lato" onclick="getFile()">Seleccione una foto</div>
                                     <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
-                                        <input name='imagen' id="upfile" style="width: 200px;" type="file" value="upload" onchange="subirImagen();"/>
+                                        <input name='imagen' id="upfile" type="file" value="upload" onchange="subirImagen();"/>
                                     </div>
-                                    <input id="ok" style="height: 0px; width: 0px; display:none;" type="submit" value="ok" />
                                 </form>
 
-
-                            </div>
+                        </div>
+                        <div class="col-md-10">
+                             <form action="">
+                        <div class="row">
                             <div class="col-md-11">
                                 <div class="row">
                                     <div class="col-md-6 text-center">
@@ -420,6 +423,18 @@
                         </div>
                         <!-- /.row -->
                     </form>
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+                    <!-- /.row   aqui pegar el perfil.html-->
+
                 </div>
                 <!-- /.container-fluid -->
 

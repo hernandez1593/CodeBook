@@ -6,11 +6,12 @@ $conn = $connection->getConnection();
 
 
 $user = $_REQUEST['user'];
-$pass = md5($_REQUEST['pass']);
+$pass = $_REQUEST['pass'];
 
 $query = "select * from person where username = '$user' and pass = '$pass'";
 
-$result = pg_query($query);
+$result = pg_query($conn,$query);
+$row =  pg_fetch_row($result);
 if (pg_num_rows($result) > 0)
 {
     $row = pg_fetch_assoc($result);
@@ -47,6 +48,7 @@ if (pg_num_rows($result) > 0)
             $arr[] = array( 'fName'=>$row['first_name'],
                             'lName'=>$row['last_name'],
                             'id'=>$row['id_person'],
+                            'img_name'=>$row['img_name'],
                             'user'=>$row['username'],
                             'pass'=>$row['pass'],
                             'email'=>$row['email'],
