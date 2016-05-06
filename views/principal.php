@@ -8,7 +8,8 @@
     {
 
         $rowUser = $_SESSION["rowUser"];
-        $nombreUsuario = "{$rowUser['fName']} {$rowUser['lName']}";
+        $nombre = $rowUser['fName'];
+        //$nombreUsuario = "{$rowUser['fName']} {$rowUser['lName']}";
         //$imageName = md5($rowUser[4]);
         //$routeImage = "http://localhost/usuariosGitBook/$imageName";
 
@@ -62,8 +63,6 @@
         <link href="../css/principal.css" rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="../js/principal.js"></script>
-        </script><script src="../js/perfil.js"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -173,7 +172,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $nombreUsuario; ?><b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $nombre; ?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -252,7 +251,7 @@
                                                 <div class="mostrar">
                                                     <label for="nombrePerfil">Nombre: </label>
                                                     <label id="nombrePerfil">
-                                                        <?php echo $nombreUsuario; ?>
+                                                        <?php echo $nombre; ?>
                                                     </label>
                                                 </div>
                                                 <div class="editar">
@@ -435,45 +434,14 @@
                         </div>
 
                     </div>
-
-
-
-
-
-
-
-                    <!-- /.row   aqui pegar el perfil.html-->
-
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
-            <!-- /#page-wrapper -->
-
         </div>
-        <!-- /#wrapper -->
-
-        <!-- jQuery -->
-        <script>
-            var name = document.getElementById('nombrePerfil').value;
-            function reqListener () {
-              console.log(this.responseText);
-            }
-
-            var oReq = new XMLHttpRequest(); //New request object
-            oReq.onload = function() {
-                //This is where you handle what to do with the response.
-                //The actual data is found on this.responseText
-                alert(this.responseText); //Will alert: 42
-            };
-            oReq.open("get", "../php/Person.php?action=getpublication&name='Yorbi'", true);
-            //                               ^ Don't block the rest of the execution.
-            //                                 Don't wait until the request finishes to
-            //                                 continue.
-            oReq.send();
-        </script>
         <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/principal.js"></script>
+        </script><script src="../js/perfil.js"></script>
+
 
     </body>
 
