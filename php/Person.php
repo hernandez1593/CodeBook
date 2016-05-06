@@ -33,9 +33,9 @@ class Person{
             $result2 = pg_query($conn,$query2);
             //JSON ENCODE EACH ONE
             while($row2 = pg_fetch_assoc($result2)){
-                $forum_arr = array('id_forum'=>($row2['id_forum']),
+                array_push($forum_arr , array('id_forum'=>($row2['id_forum']),
                                   'description'=>($row2['description']),
-                                  'title'=>($row2['title']));
+                                  'title'=>($row2['title'])));
             }
 
             //Get all the publications of that user
@@ -45,11 +45,11 @@ class Person{
             $result3 = pg_query($conn,$query3);
             //JSON ALl the result
             while($row3 = pg_fetch_assoc($result3)){
-                $forum_arr = array('name'=>($row3['publication_name']),
+                array_push($forum_arr = array('name'=>($row3['publication_name']),
                                   'description'=>($row3['description']),
                                   'code'=>($row3['code']),
                                   'language_name'=>($row3['language_name'])
-                                  );
+                                  ));
             }
 
             //Create the JSON ARrray
@@ -85,9 +85,9 @@ class Person{
             $result2 = pg_query($conn,$query2);
             //JSON ENCODE EACH ONE
             while($row2 = pg_fetch_assoc($result2)){
-                $forum_arr = array('id_forum'=>($row2['id_forum']),
+                array_push($forum_arr , array('id_forum'=>($row2['id_forum']),
                                   'description'=>($row2['description']),
-                                  'title'=>($row2['title']));
+                                  'title'=>($row2['title'])));
             }
 
             //Get all the publications of that user
@@ -97,11 +97,11 @@ class Person{
             $result3 = pg_query($conn,$query3);
             //JSON ALl the result
             while($row3 = pg_fetch_assoc($result3)){
-                $publication_arr = array('name'=>($row3['publication_name']),
+                array_push($publication_arr = array('name'=>($row3['publication_name']),
                                   'description'=>($row3['description']),
                                   'code'=>($row3['code']),
                                   'language_name'=>($row3['language_name'])
-                                  );
+                                  ));
             }
 
             //Create the JSON ARrray

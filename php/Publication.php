@@ -68,13 +68,13 @@ class Publication{
             //Create JSON
             while($row = pg_fetch_assoc($result)) {
                 //Create the JSON ARrray
-                $arr[] = array( 'first_name'=>$row['first_name'],
+                array_push($arr[] ,array( 'first_name'=>$row['first_name'],
                             'last_name'=>$row['last_name'],
                             'language_name'=>$row['language_name'],
                             'publication_name'=>$row['publication_name'],
                             'description'=>$row['description'],
                             'code'=>$row['code']
-                          );
+                          ));
             }
             echo json_encode($arr);
         }else{
@@ -103,11 +103,11 @@ class Publication{
             //Create JSON
             while($row = pg_fetch_assoc($result)) {
                 //Create the JSON ARrray
-                $arr[] = array('language_name'=>$row['language_name'],
+                array_push($arr[] , array('language_name'=>$row['language_name'],
                             'publication_name'=>$row['publication_name'],
                             'description'=>$row['description'],
                             'code'=>$row['code']
-                          );
+                          ));
             }
             echo json_encode($arr);
         }else{
@@ -128,11 +128,11 @@ class Publication{
         $result = pg_query($conn, $query) or die("Consult Error");
         while($row = pg_fetch_assoc($result)){
             //Create the JSON ARrray
-            $arr[] = array( 'language_name'=>$row['language_name'],
+            array_push($arr[] , array( 'language_name'=>$row['language_name'],
                         'publication_name'=>$row['publication_name'],
                         'description'=>$row['description'],
                         'code'=>$row['code']
-                      );
+                      ));
         }
             echo json_encode($arr);
         }
