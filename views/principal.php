@@ -62,6 +62,8 @@
         <link href="../css/sb-admin.css" rel="stylesheet">
         <link href="../css/principal.css" rel="stylesheet">
         <link href="../css/friends.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/friends.css">
+
         <!-- Custom Fonts -->
         <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -162,7 +164,7 @@
                                     <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Publicaciones</a>
                                 </li>
                                 <li>
-                                    <button onclick="carga('friends.php','content1')"><i class="fa fa-fw fa-table"></i> Amigos</button>
+                                    <button onclick="carga('friends.php','contentX')"><i class="fa fa-fw fa-table"></i> Amigos</button>
                                 </li>
                                 <li>
                                     <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
@@ -174,7 +176,7 @@
                     </nav>
             </div>
                     <div id="content1" class="indent contenido col-md-11">
-
+                            <div id="contentX">
                             <!-- Page Heading -->
                             <div class="row">
                                 <div class="col-md-12">
@@ -385,6 +387,7 @@
                             </div>
                     </div>
                 </div>
+                        </div>
             </div>
         <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.min.js"></script>
