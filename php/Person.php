@@ -189,52 +189,23 @@ class Person{
         $connection = new Connection();
         $conn = $connection->getConnection();
         $arr = [];
-        $activeUser = $_SESSION[$_SESSION["rowUser"]]
-          $query =  "select p.last_name,p.first_name,p.username,p.email,p.admission_date,p.id_person from person p
-            inner join friend f  on p.id_person = f.id_user2
-            where f.id_user1 = $id and f.friends = 1";
+        $activeUser =$_SESSION["rowUser"];
+        $query =  "select p.last_name,p.first_name,p.username,p.email,p.admission_date,p.id_person from            person p inner join friend f  on p.id_person = f.id_user2
+                   where f.id_user1 = $id and f.friends = 1";
         $result = pg_query($conn, $query) or die ("Error while getting User Type");
         while($row = pg_fetch_assoc($result)) {
-            $forum_arr = [];
+            $myF_arr = [];
             $id = $row['id_person'];
-            $query2 = "select id_forum, description, title from forum f inner join person p
-                       on f.id_person = p.id_person
-                       where p.id_person = '$id'";
-            $result2 = pg_query($conn,$query2);
-            //JSON ENCODE EACH ONE
-            while($row2 = pg_fetch_assoc($result2)){
-                array_push($forum_arr , array('id_forum'=>($row2['id_forum']),
-                                  'description'=>($row2['description']),
-                                  'title'=>($row2['title'])));
+            array_push($myF_arr , array('fName'=>($row['first_name']),
+                                        'username'=>($row['username']),
+                                        'email'=>($row2['email']),                               'admissionDate'=>($row['admission_date']),
+                                        'id'=>($row['admission_date']),
+                                        'lName'=>($row['last_name'])
+                                       )
+                      );
             }
-
-            //Get all the publications of that user
-            $publication_arr = [];
-            $query3 = "select publication_name, description, code, language_name from publication p inner join program_language pg on p.id_language = pg.id_language
-            where p.id_person = '$id'";
-            $result3 = pg_query($conn,$query3);
-            //JSON ALl the result
-            while($row3 = pg_fetch_assoc($result3)){
-                array_push($publication_arr = array('name'=>($row3['publication_name']),
-                                  'description'=>($row3['description']),
-                                  'code'=>($row3['code']),
-                                  'language_name'=>($row3['language_name'])
-                                  ));
-            }
-
             //Create the JSON ARrray
-            $arr[] = array( 'fName'=>$row['first_name'],
-                            'lName'=>$row['last_name'],
-                            'id'=>$row['id_person'],
-                            'user'=>$row['username'],
-                            'pass'=>$row['pass'],
-                            'email'=>$row['email'],
-                            'admission_date'=>$row['admission_date'],
-                            'typeUser'=>$row['type_user'],
-                            'gender'=>$row['gender'],
-                            'forum'=>$forum_arr,
-                            'publication'=>$publication_arr
-                          );
+            $arr[] = $myF_arr;
         }
         echo json_encode($arr);
     }
