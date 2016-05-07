@@ -94,10 +94,8 @@ function loadMyFriends() {
                 var div5 = document.createElement("div");
                 var div6 = document.createElement("div");
                 var img = document.createElement("img");
-                var img2 = document.createElement("img");
                 var h4 = document.createElement("h4");
-                var btn = document.createElement("button");
-                div1.setAttribute("class", "grid-item grid-item--height2 grid-item--width2 ");
+                div1.setAttribute("class", "panel-content");
                 div2.setAttribute("class", "row");
                 div3.setAttribute("class", "col-md-offset-1 col-md-5");
                 div4.setAttribute("class", "col-md-12");
@@ -105,48 +103,48 @@ function loadMyFriends() {
                 div6.setAttribute("class", "col-md-6");
                 img.setAttribute("class", "img-responsive img-rounded");
                 img.style.maxWidth = "100%";
-                console.log(obj[0]['img']);
+                console.log(obj[i]['img']);
                 img.src = "../images/" + obj[i]['img'];
 
-                //modal attibutes
-
-                img2.setAttribute("class", "img-responsive img-rounded");
-                img2.style.maxWidth = "100%";
-                console.log(obj[0]['img']);
-                img2.src = "../images/" + obj[i]['img'];
-                var imgM = document.getElementById("modalM");
-                imgM.appendChild(img2);
-                var h4m = document.getElementById("modalName");
-                h4m.innerHTML = obj[i]['fName'] + " " + obj[i]['lName'];
-                if ("Teacher" == document.getElementById("ninja")) {
-                    var email = document.getElementById("modalEmail");
-                    email.innerHTML = obj[0]['email'];
-                    var admissionDate = document.getElementById();
-                    admissionDate.innerHTML = obj[0]['admission_date'];
-                    var user = document.getElementById();
-                    user.innerHTML = obj[0]['username'];
-                }
 
 
 
-                btn.setAttribute("class", "btn btn-primary btn-lg glyphicon glyphicon-question-sign")
-                btn.innerHTML = "Info";
-                btn.setAttribute("data-target", ".bs-example-modal-lg");
-                btn.setAttribute("data-toggle", "modal");
                 h4.innerHTML = obj[i]['fName'] + " " + obj[i]['lName'];
 
                 div6.appendChild(h4);
 
 
+
+                //modal attibutes
+                var ninja = document.getElementById("ninja").innerHTML;
+                //console.log(ninja + "***" + "Teacher");
+                if (ninja.includes('Teacher')) {
+                    var email = document.createElement("h4");
+                    var admission = document.createElement("h4");
+                    var id = document.createElement("h4");
+                    var username = document.createElement("h4");
+                    var username = document.createElement("h4");
+                    email.innerHTML = "Email: " + obj[i]['email'];
+                    admission.innerHTML = "Admission Date:" + obj[i]['admissionDate'];
+                    username.innerHTML = "Username: " + obj[i]['username'];
+                    id.innerHTML = "ID: " + obj[i]['id'];
+                    div6.appendChild(email);
+                    div6.appendChild(admission);
+                    div6.appendChild(id);
+                    div6.appendChild(username);
+
+                }
+
+
                 div5.appendChild(div6);
                 div3.appendChild(img);
                 div4.appendChild(div5);
-                div4.appendChild(btn);
+
+
                 div2.appendChild(div3);
                 div2.appendChild(div4);
                 div1.appendChild(div2);
                 div1.appendChild(div5);
-
                 $('#my-friends').append(div1);
 
 
