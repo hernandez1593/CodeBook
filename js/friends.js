@@ -82,6 +82,7 @@ function loadMyFriends() {
 
 
             var space = document.getElementById('add-friend');
+            console.log(xhttp.responseText);
             var obj = eval('(' + xhttp.responseText + ')');
             console.log(obj);
             $('friend-list').empty();
@@ -94,28 +95,30 @@ function loadMyFriends() {
                 var div6 = document.createElement("div");
                 var img = document.createElement("img");
                 var h4 = document.createElement("h4");
-                var span = document.createElement("span");
                 var btn = document.createElement("button");
-                div1.setAttribute("class", "grid-item");
+                div1.setAttribute("class", "grid-item grid-item--height2 grid-item--width2 ");
                 div2.setAttribute("class", "row");
                 div3.setAttribute("class", "col-md-offset-1 col-md-5");
-                div4.setAttribute("class", "col-md-6");
+                div4.setAttribute("class", "col-md-12");
                 div5.setAttribute("class", "row");
-                div6.setAttribute("class", "col-md-12");
+                div6.setAttribute("class", "col-md-6");
                 img.setAttribute("class", "img-responsive img-rounded");
                 img.style.maxWidth = "100%";
                 console.log(obj[0]['img']);
                 img.src = "../images/" + obj[i]['img'];
 
-                span.setAttribute("class", "glyphicon glyphicon-question-sign");
-                btn.setAttribute("value", "Info");
-                h4.setAttribute("value", obj[i]['fName'] + " " + obj[i]['lName']);
-                btn.appendChild(span);
-                div6.appendChild(btn);
+
+                btn.setAttribute("class", "btn btn-primary btn-lg glyphicon glyphicon-question-sign")
+                btn.innerHTML = "Info";
+                h4.innerHTML = obj[i]['fName'] + " " + obj[i]['lName'];
+
+                div6.appendChild(h4);
+
+
                 div5.appendChild(div6);
                 div3.appendChild(img);
                 div4.appendChild(div5);
-
+                div4.appendChild(btn);
                 div2.appendChild(div3);
                 div2.appendChild(div4);
                 div1.appendChild(div2);
