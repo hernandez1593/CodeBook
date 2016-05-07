@@ -60,7 +60,7 @@ if (pg_num_rows($result) > 0)
     //echo json_encode($array[0]);
     echo $arr;
     $_SESSION["rowUser"] = $arr[0];
-    header('Location: /webProyecto/views/principal.php');
+    header('Location: /webProyecto/views/Main.php');
 }
 else{
     echo "false";

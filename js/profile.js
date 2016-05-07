@@ -28,3 +28,6 @@ function carga(url,id)
     pagecnx.open('GET',url,true);
     pagecnx.send(null);
 }
+
+
+carga('profile.php','contentX');

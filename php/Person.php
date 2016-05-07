@@ -59,7 +59,7 @@ class Person{
                           );
 
         $_SESSION["rowUser"] = ($arr[0]);
-        header('Location: /webProyecto/views/principal.php');
+        header('Location: /webProyecto/views/main.php');
     }
 
     //Functions gets the persons with all of its forums and publications made
