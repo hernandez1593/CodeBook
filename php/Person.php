@@ -185,6 +185,7 @@ class Person{
     }
 
     //Gets all friends of a user
+       //Gets all friends of a user
     function getMyFriends(){
         $connection = new Connection();
         $conn = $connection->getConnection();
@@ -199,6 +200,7 @@ class Person{
             $id = $row['id_person'];
             array_push($myF_arr , array('fName'=>($row['first_name']),
                                         'username'=>($row['username']),
+                                        'img'=>($row['img_name']),
                                         'email'=>($row2['email']),                               'admissionDate'=>($row['admission_date']),
                                         'id'=>($row['admission_date']),
                                         'lName'=>($row['last_name'])
@@ -210,7 +212,6 @@ class Person{
         }
         echo json_encode($arr);
     }
-
 
     //remove a user
     function removePerson($id){
