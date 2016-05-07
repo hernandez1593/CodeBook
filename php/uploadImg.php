@@ -1,6 +1,5 @@
 <?php
     require './Person.php';
-    session_start();
     if (isset( $_SESSION["rowUser"]))
     {
         $rowUser = $_SESSION["rowUser"];
@@ -17,7 +16,14 @@
             unlink($target_path,$imageName);
         }
         move_uploaded_file($archivo, $target_path.$nombreArchivo);
-        $_SESSION['rowUser']['img_name'] = $imageName;
+        $id = $rowUser['id'];
+        //Change the img name in the database
+        $query = "update person set img_name = '$imageName' where id_person = '$id'";
+        $query_answer = pg_query($conn,$query);
+        //Get user updated info and set as row user
+        $arr = $person->getInfo($id);
+        $_SESSION['rowUser'] = $arr[0];
+
         header('Location: /webProyecto/views/Main.php');
     }
 ?>

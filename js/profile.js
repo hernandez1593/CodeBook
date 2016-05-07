@@ -18,6 +18,7 @@ function createXMLHttpRequest() {
 
 function carga(url,id)
 {
+    console.log(url);
     var pagecnx = createXMLHttpRequest();
     pagecnx.onreadystatechange=function()
     {
@@ -66,4 +67,4 @@ function onNavigtionClick(option){
 }
 
 //Loads on main page load
-carga('profile.php','page_content');
+carga('Profile.php','page_content');

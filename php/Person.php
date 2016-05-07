@@ -75,7 +75,7 @@ class Person{
             $id = $row['id_person'];
             $query2 = "select id_forum, description, title from forum f inner join person p
                        on f.id_person = p.id_person
-                       where p.id_person = $id";
+                       where p.id_person = '$id'";
             $result2 = pg_query($conn,$query2);
             //JSON ENCODE EACH ONE
             while($row2 = pg_fetch_assoc($result2)){
@@ -132,6 +132,8 @@ class Person{
         echo json_encode($pub_array);
     }
 
+
+
     //Gets all of the types of users
     function getUser($name){
         $connection = new Connection();
@@ -142,6 +144,56 @@ class Person{
         while($row = pg_fetch_assoc($result)) {
             $forum_arr = [];
             $id = $row['id_person'];
+            $query2 = "select id_forum, description, title from forum f inner join person p
+                       on f.id_person = p.id_person
+                       where p.id_person = '$id'";
+            $result2 = pg_query($conn,$query2);
+            //JSON ENCODE EACH ONE
+            while($row2 = pg_fetch_assoc($result2)){
+                array_push($forum_arr , array('id_forum'=>($row2['id_forum']),
+                                  'description'=>($row2['description']),
+                                  'title'=>($row2['title'])));
+            }
+
+            //Get all the publications of that user
+            $publication_arr = [];
+            $query3 = "select publication_name, description, code, language_name from publication p inner join program_language pg on p.id_language = pg.id_language
+            where p.id_person = '$id'";
+            $result3 = pg_query($conn,$query3);
+            //JSON ALl the result
+            while($row3 = pg_fetch_assoc($result3)){
+                array_push($publication_arr = array('name'=>($row3['publication_name']),
+                                  'description'=>($row3['description']),
+                                  'code'=>($row3['code']),
+                                  'language_name'=>($row3['language_name'])
+                                  ));
+            }
+
+            //Create the JSON ARrray
+            $arr[] = array( 'fName'=>$row['first_name'],
+                            'lName'=>$row['last_name'],
+                            'id'=>$row['id_person'],
+                            'user'=>$row['username'],
+                            'pass'=>$row['pass'],
+                            'email'=>$row['email'],
+                            'admission_date'=>$row['admission_date'],
+                            'typeUser'=>$row['type_user'],
+                            'gender'=>$row['gender'],
+                            'forum'=>$forum_arr,
+                            'publication'=>$publication_arr
+                          );
+        }
+        echo json_encode($arr);
+    }
+
+    function getInfo($id){
+        $connection = new Connection();
+        $conn = $connection->getConnection();
+        $arr = [];
+        $query = "select * from person where id_person = '$id'";
+        $result = pg_query($conn, $query) or die ("Error while getting User Type");
+        while($row = pg_fetch_assoc($result)) {
+            $forum_arr = [];
             $query2 = "select id_forum, description, title from forum f inner join person p
                        on f.id_person = p.id_person
                        where p.id_person = '$id'";
@@ -232,29 +284,29 @@ class Person{
 $person = new Person();
 
 
-if($_REQUEST['action'] == 'getfriends'){
+if(isset($_REQUEST['action']) == 'getfriends'){
     $person->getMyFriends();
 }
-if($_REQUEST['action'] == 'get'){
+if(isset($_REQUEST['action']) == 'get'){
     $person->getPersons();
 }
-if($_REQUEST['action'] == 'getuser'){
+if(isset($_REQUEST['action']) == 'getuser'){
     $person->getUser($_REQUEST['name']);
 }
-if($_REQUEST['action'] == 'remove'){
+if(isset($_REQUEST['action']) == 'remove'){
     $person->removePerson($_REQUEST['id']);
     //$person->getPersons();
 }
-if($_REQUEST['action'] == 'insert'){
+if(isset($_REQUEST['action']) == 'insert'){
     //http://localhost:81/database%20scripts/Person.php?action=insert&fName=yorbi&lName=mendez&id=207160775&user=yorbigmendez&pass=1234&email=ymenderz&admission=1993-09-30&typeUser=admin&gender=Male
     $person->insertPerson($_REQUEST['fName'], $_REQUEST['lName'], $_REQUEST['id'], $_REQUEST['user'] ,md5($_REQUEST['pass']) ,$_REQUEST['email'],$_REQUEST['admission'],$_REQUEST['typeUser'],$_REQUEST['gender']);
     $person->getPersons();
 }
 
-if($_REQUEST['action'] == 'edit'){
+if(isset($_REQUEST['action']) == 'edit'){
     $person->editPerson($_REQUEST['fName'], $_REQUEST['lName'],$_REQUEST['id'],$_REQUEST['user'],md5($_REQUEST['pass']),$_REQUEST['email'],$_REQUEST['admission'],$_REQUEST['typeUser'],$_REQUEST['gender']);
     $person->getPersons();
 }
-if($_REQUEST['action'] == 'getpublications'){
+if(isset($_REQUEST['action']) == 'getpublications'){
     $person->getPublications($_REQUEST['name']);
 }
