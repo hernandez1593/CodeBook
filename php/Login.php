@@ -6,7 +6,7 @@ $conn = $connection->getConnection();
 
 
 $user = $_REQUEST['user'];
-$pass = $_REQUEST['pass'];
+$pass = md5($_REQUEST['pass']);
 
 $query = "select * from person where username = '$user' and pass = '$pass'";
 
@@ -49,7 +49,7 @@ if (pg_num_rows($result) > 0)
                     'id'=>$row['id_person'],
                     'img_name'=>$row['img_name'],
                     'user'=>$row['username'],
-                    'pass'=>$row['pass'],
+                    'pass'=>md5($row['pass']),
                     'email'=>$row['email'],
                     'admission_date'=>$row['admission_date'],
                     'typeUser'=>$row['type_user'],
