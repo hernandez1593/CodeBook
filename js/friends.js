@@ -73,7 +73,7 @@ function loadSearchedUsers(name) {
 
 
 
-function loadMyFriends() {
+function loadMyFriends(type) {
     var xhttp = new obtenerXHR();
     console.log("changa");
     xhttp.open("GET", "../php/Person.php?action=getfriends", true);
@@ -94,6 +94,7 @@ function loadMyFriends() {
                 var div5 = document.createElement("div");
                 var div6 = document.createElement("div");
                 var img = document.createElement("img");
+                var img2 = document.createElement("img");
                 var h4 = document.createElement("h4");
                 var btn = document.createElement("button");
                 div1.setAttribute("class", "grid-item grid-item--height2 grid-item--width2 ");
@@ -107,9 +108,31 @@ function loadMyFriends() {
                 console.log(obj[0]['img']);
                 img.src = "../images/" + obj[i]['img'];
 
+                //modal attibutes
+
+                img2.setAttribute("class", "img-responsive img-rounded");
+                img2.style.maxWidth = "100%";
+                console.log(obj[0]['img']);
+                img2.src = "../images/" + obj[i]['img'];
+                var imgM = document.getElementById("modalM");
+                imgM.appendChild(img2);
+                var h4m = document.getElementById("modalName");
+                h4m.innerHTML = obj[i]['fName'] + " " + obj[i]['lName'];
+                if (type == 'Teacher') {
+                    var email = document.getElementById("modalEmail");
+                    email.innerHTML = obj[0]['email'];
+                    var admissionDate = document.getElementById();
+                    admissionDate.innerHTML = obj[0]['admission_date'];
+                    var user = document.getElementById();
+                    user.innerHTML = obj[0]['username'];
+                }
+
+
 
                 btn.setAttribute("class", "btn btn-primary btn-lg glyphicon glyphicon-question-sign")
                 btn.innerHTML = "Info";
+                btn.setAttribute("data-target", ".bs-example-modal-lg");
+                btn.setAttribute("data-toggle", "modal");
                 h4.innerHTML = obj[i]['fName'] + " " + obj[i]['lName'];
 
                 div6.appendChild(h4);

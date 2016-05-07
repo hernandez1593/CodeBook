@@ -13,12 +13,13 @@
         foreach($rowUser["publication"] as $pub) {
             $changa.push($pub["publication_name"]);
         }
+        $type = $rowUser['typeUser'];
         //$changa = json_decode($rowUser['publication']);
         $company = "";
 
 
 ?>
-<!--DOCTYPE html -->
+    <!--DOCTYPE html -->
     <html lang="en">
 
     <head>
@@ -54,7 +55,7 @@
                 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                        <a class="navbar-brand" >Acerca de</a>
+                        <a class="navbar-brand">Acerca de</a>
                     </div>
                     <!-- Top Menu Items -->
                     <ul class="nav navbar-right top-nav">
@@ -90,13 +91,13 @@
                 </nav>
             </div>
             <div class="contenido col-md-10">
-                    <div id="page_content">
+                <div id="page_content">
                     <!-- Page Content here -->
-                    </div>
+                </div>
             </div>
         </div>
 
-         <!-- Scripts here -->
+        <!-- Scripts here -->
         <script src="../js/jquery.js"></script>
         <script src="../js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/Profile.js"></script>
@@ -106,7 +107,7 @@
 
     </html>
 
-<?php
+    <?php
         }
     else{
         header('Location: /webProyecto/views/Main.php');
