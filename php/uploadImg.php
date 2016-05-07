@@ -1,5 +1,5 @@
 <?php
-
+    require './Person.php';
     session_start();
     if (isset( $_SESSION["rowUser"]))
     {
@@ -13,9 +13,11 @@
         //chown("C:/wamp/www/webProyecto/php/uploadImage.php", 777);
         //chmod("C:/wamp/www/webProyecto/php/uploadImage.php", 777);
         // $target_path = $_SERVER['DOCUMENT_ROOT']."webProyecto/images/".$imageName;
-        unlink($target_path);
-        move_uploaded_file($archivo, $target_path,0777);
-
-       //header('Location: /views/principal.php');
+        if($imageName != 'teddy.png'){
+            unlink($target_path,$imageName);
+        }
+        move_uploaded_file($archivo, $target_path.$nombreArchivo);
+        $_SESSION['rowUser']['img_name'] = $imageName;
+        header('Location: /webProyecto/views/Main.php');
     }
 ?>
