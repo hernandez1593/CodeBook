@@ -12,6 +12,7 @@
 
 .be-green
 {
+    text-align: center;
     background-color: #00B276;
 }
 .white
@@ -40,12 +41,11 @@
 	color:#fff;
 }
 
-.navbar a:hover{
-    background-color:#F05283;
-	transition:0.2s;
-	color:#fff;
-}
 
 .margin-top{
     margin-top: 10px !important;
+}
+
+.side-nav{
+    overflow: hidden;
 }

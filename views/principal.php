@@ -152,7 +152,7 @@
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="#"><i class="fa fa-fw fa-power-off"></i>Log Out</a>
+                                        <a href="../index.php"><i class="fa fa-fw fa-power-off"></i>Log Out</a>
                                     </li>
                                 </ul>
                             </li>
@@ -161,13 +161,13 @@
                         <div class="collapse navbar-collapse navbar-ex1-collapse">
                             <ul class="nav navbar-nav side-nav">
                                 <li class="active">
-                                    <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Perfil</a>
+                                    <a onclick="carga('principal.php','contentX')"><i class="fa fa-fw fa-dashboard"></i>My Profile</a>
                                 </li>
                                 <li>
-                                    <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Publicaciones</a>
+                                    <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i>Posts</a>
                                 </li>
                                 <li>
-                                    <button onclick="carga('friends.php','contentX')"><i class="fa fa-fw fa-table"></i> Amigos</button>
+                                    <a onclick="carga('friends.php','contentX')"><i class="fa fa-fw fa-table"></i> Friends</a>
                                 </li>
                                 <li>
                                     <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
@@ -178,7 +178,7 @@
                         <!-- /.navbar-collapse -->
                     </nav>
             </div>
-                    <div id="content1" class="indent contenido col-md-11">
+                    <div id="content1" class="contenido col-md-11">
                             <div id="contentX">
                             <!-- Page Heading -->
                             <div class="row">
@@ -203,9 +203,9 @@
                                 <div class="col-md-10">
                                     <form action="">
                                     <div class="row">
-                                        <div class="col-md-10 indent">
+                                        <div class="col-md-10 margin-left">
                                             <div class="row">
-                                                <div class="col-md-6 text-center">
+                                                <div class="col-md-6 text-centermargin-left">
                                                     <div class="panel panel-default">
                                                         <div class="panel-body">
                                                             <div class="mostrar">
