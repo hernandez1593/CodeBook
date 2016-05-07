@@ -13,6 +13,7 @@
 
 
 ?>
+   <label class="hidden" id="ninja"><?php echo $type; ?></label>
     <div class="row">
         <div class="col-md-12">
             <h2>Mis amigos</h2>
@@ -61,7 +62,7 @@
                 <div class="col-md-8">
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h2 onclick="loadMyFriends(<?php echo $type; ?>)">My Friends</h2></div>
+                            <h2 onclick="loadMyFriends()">My Friends</h2></div>
                         <div id="my-friends" class="panel-body friend-list">
 
                             <!--  <div class="grid-item grid-item--height2 grid-item--width2 ">

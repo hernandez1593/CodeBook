@@ -73,7 +73,7 @@ function loadSearchedUsers(name) {
 
 
 
-function loadMyFriends(type) {
+function loadMyFriends() {
     var xhttp = new obtenerXHR();
     console.log("changa");
     xhttp.open("GET", "../php/Person.php?action=getfriends", true);
@@ -82,7 +82,7 @@ function loadMyFriends(type) {
 
 
             var space = document.getElementById('add-friend');
-            console.log(xhttp.responseText);
+
             var obj = eval('(' + xhttp.responseText + ')');
             console.log(obj);
             $('friend-list').empty();
@@ -118,7 +118,7 @@ function loadMyFriends(type) {
                 imgM.appendChild(img2);
                 var h4m = document.getElementById("modalName");
                 h4m.innerHTML = obj[i]['fName'] + " " + obj[i]['lName'];
-                if (type == 'Teacher') {
+                if ("Teacher" == document.getElementById("ninja")) {
                     var email = document.getElementById("modalEmail");
                     email.innerHTML = obj[0]['email'];
                     var admissionDate = document.getElementById();
