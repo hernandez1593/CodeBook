@@ -25,7 +25,7 @@
                 }
             }
         }
-    }
+
 ?>
 <!--DOCTYPE html -->
     <html lang="en">
@@ -114,3 +114,10 @@
     </body>
 
     </html>
+
+<?php
+        }
+    else{
+        header('Location: /webProyecto/views/Main.php');
+    }
+?>

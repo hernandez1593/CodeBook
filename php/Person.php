@@ -3,6 +3,7 @@
 require './dbconnection.php';
 session_start();
 
+
 class Person{
     //Inserts a new user
     function insertPerson($fName,$lName,$id,$user,$pass,$email,$admission,$typeUser,$gender){
@@ -25,9 +26,9 @@ class Person{
         $result2 = pg_query($conn,$query2);
         //JSON ENCODE EACH ONE
         while($row2 = pg_fetch_assoc($result2)){
-            $forum_arr = array('id_forum'=>($row2['id_forum']),
+            array_push($forum_arr ,array('id_forum'=>($row2['id_forum']),
                               'description'=>($row2['description']),
-                              'title'=>($row2['title']));
+                              'title'=>($row2['title'])));
         }
 
         //Get all the publications of that user
@@ -91,7 +92,7 @@ class Person{
             $result3 = pg_query($conn,$query3);
             //JSON ALl the result
             while($row3 = pg_fetch_assoc($result3)){
-                array_push($forum_arr = array('name'=>($row3['publication_name']),
+                array_push($forum_arr , array('name'=>($row3['publication_name']),
                                   'description'=>($row3['description']),
                                   'code'=>($row3['code']),
                                   'language_name'=>($row3['language_name'])
@@ -102,6 +103,7 @@ class Person{
             $arr[] = array( 'fName'=>$row['first_name'],
                             'lName'=>$row['last_name'],
                             'id'=>$row['id_person'],
+                            'img_name'=>$row['img_name'],
                             'user'=>$row['username'],
                             'pass'=>$row['pass'],
                             'email'=>$row['email'],
@@ -123,7 +125,7 @@ class Person{
         $query = "select * from publication pub inner join person p on p.id_person = pub.id_person where first_name = 'Yorbi'";
         $query_answer = pg_query($conn,$query);
         while($row = pg_fetch_assoc($query_answer)){
-                array_push($pub_array = array('name'=>($row['publication_name']),
+                array_push($pub_array ,array('name'=>($row['publication_name']),
                                   'description'=>($row['description']),
                                   'code'=>($row['code']),
                                   'language_name'=>($row['language_name'])
@@ -134,7 +136,7 @@ class Person{
 
 
 
-    //Gets all of the types of users
+    //Gets all of the types of users with the given parameter
     function getUser($name){
         $connection = new Connection();
         $conn = $connection->getConnection();
@@ -162,7 +164,7 @@ class Person{
             $result3 = pg_query($conn,$query3);
             //JSON ALl the result
             while($row3 = pg_fetch_assoc($result3)){
-                array_push($publication_arr = array('name'=>($row3['publication_name']),
+                array_push($publication_arr, array('name'=>($row3['publication_name']),
                                   'description'=>($row3['description']),
                                   'code'=>($row3['code']),
                                   'language_name'=>($row3['language_name'])
@@ -172,6 +174,7 @@ class Person{
             //Create the JSON ARrray
             $arr[] = array( 'fName'=>$row['first_name'],
                             'lName'=>$row['last_name'],
+                            'img_name'=>$row['img_name'],
                             'id'=>$row['id_person'],
                             'user'=>$row['username'],
                             'pass'=>$row['pass'],
@@ -212,7 +215,7 @@ class Person{
             $result3 = pg_query($conn,$query3);
             //JSON ALl the result
             while($row3 = pg_fetch_assoc($result3)){
-                array_push($publication_arr = array('name'=>($row3['publication_name']),
+                array_push($publication_arr , array('name'=>($row3['publication_name']),
                                   'description'=>($row3['description']),
                                   'code'=>($row3['code']),
                                   'language_name'=>($row3['language_name'])
@@ -222,6 +225,7 @@ class Person{
             //Create the JSON ARrray
             $arr[] = array( 'fName'=>$row['first_name'],
                             'lName'=>$row['last_name'],
+                            'img_name'=>$row['img_name'],
                             'id'=>$row['id_person'],
                             'user'=>$row['username'],
                             'pass'=>$row['pass'],
@@ -284,29 +288,29 @@ class Person{
 $person = new Person();
 
 
-if(isset($_REQUEST['action']) == 'getfriends'){
+if($_REQUEST['action'] == 'getfriends'){
     $person->getMyFriends();
 }
-if(isset($_REQUEST['action']) == 'get'){
+if($_REQUEST['action']== 'get'){
     $person->getPersons();
 }
-if(isset($_REQUEST['action']) == 'getuser'){
+if($_REQUEST['action'] == 'getuser'){
     $person->getUser($_REQUEST['name']);
 }
-if(isset($_REQUEST['action']) == 'remove'){
+if($_REQUEST['action'] == 'remove'){
     $person->removePerson($_REQUEST['id']);
     //$person->getPersons();
 }
-if(isset($_REQUEST['action']) == 'insert'){
+if($_REQUEST['action'] == 'insert'){
     //http://localhost:81/database%20scripts/Person.php?action=insert&fName=yorbi&lName=mendez&id=207160775&user=yorbigmendez&pass=1234&email=ymenderz&admission=1993-09-30&typeUser=admin&gender=Male
     $person->insertPerson($_REQUEST['fName'], $_REQUEST['lName'], $_REQUEST['id'], $_REQUEST['user'] ,md5($_REQUEST['pass']) ,$_REQUEST['email'],$_REQUEST['admission'],$_REQUEST['typeUser'],$_REQUEST['gender']);
     $person->getPersons();
 }
 
-if(isset($_REQUEST['action']) == 'edit'){
+if($_REQUEST['action'] == 'edit'){
     $person->editPerson($_REQUEST['fName'], $_REQUEST['lName'],$_REQUEST['id'],$_REQUEST['user'],md5($_REQUEST['pass']),$_REQUEST['email'],$_REQUEST['admission'],$_REQUEST['typeUser'],$_REQUEST['gender']);
     $person->getPersons();
 }
-if(isset($_REQUEST['action']) == 'getpublications'){
+if($_REQUEST['action'] == 'getpublications'){
     $person->getPublications($_REQUEST['name']);
 }

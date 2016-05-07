@@ -17,12 +17,18 @@
         }
         move_uploaded_file($archivo, $target_path.$nombreArchivo);
         $id = $rowUser['id'];
+
+        $connection = new Connection();
+        $conn = $connection->getConnection();
         //Change the img name in the database
-        $query = "update person set img_name = '$imageName' where id_person = '$id'";
-        $query_answer = pg_query($conn,$query);
+        //$query = "update person set img_name = '$imageName' where id_person = '$id'";
+        echo $query;
+
+       // $query_answer = pg_query($conn,$query);
         //Get user updated info and set as row user
-        $arr = $person->getInfo($id);
-        $_SESSION['rowUser'] = $arr[0];
+        //$arr = $person->getInfo($id);
+        //$decodedArr =  json_decode($arr);
+        //$_SESSION['rowUser'] = $decodedArr[0];
 
         header('Location: /webProyecto/views/Main.php');
     }
