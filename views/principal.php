@@ -66,6 +66,9 @@
 
         <!-- Custom Fonts -->
         <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
 
     </head>
 
@@ -393,6 +396,7 @@
         <script src="../js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/principal.js"></script>
         <script type="text/javascript" src="../js/perfil.js"></script>
+        <script src="../js/friends.js" text="text/javascript"></script>
 
 
     </body>
