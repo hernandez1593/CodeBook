@@ -190,8 +190,9 @@ class Person{
         $conn = $connection->getConnection();
         $arr = [];
         $activeUser =$_SESSION["rowUser"];
+        $id = $activeUser['id'];
         $query =  "select p.last_name,p.first_name,p.username,p.email,p.admission_date,p.id_person from            person p inner join friend f  on p.id_person = f.id_user2
-                   where f.id_user1 = $id and f.friends = 1";
+                   where f.id_user1 = '$id' and f.friends = 1";
         $result = pg_query($conn, $query) or die ("Error while getting User Type");
         while($row = pg_fetch_assoc($result)) {
             $myF_arr = [];
