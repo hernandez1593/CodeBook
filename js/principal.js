@@ -1,4 +1,3 @@
-
 function createXMLHttpRequest() {
     req = false;
     if (window.XMLHttpRequest) {
