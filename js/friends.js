@@ -73,7 +73,7 @@ function loadSearchedUsers(name) {
 
 
 
-function loadMyFriends() {
+function loadMyFriends(type) {
     var xhttp = new obtenerXHR();
     console.log("changa");
     xhttp.open("GET", "../php/Person.php?action=getfriends", true);
@@ -82,6 +82,7 @@ function loadMyFriends() {
 
 
             var space = document.getElementById('add-friend');
+            console.log(xhttp.responseText);
             var obj = eval('(' + xhttp.responseText + ')');
             console.log(obj);
             $('friend-list').empty();
@@ -93,29 +94,54 @@ function loadMyFriends() {
                 var div5 = document.createElement("div");
                 var div6 = document.createElement("div");
                 var img = document.createElement("img");
+                var img2 = document.createElement("img");
                 var h4 = document.createElement("h4");
-                var span = document.createElement("span");
                 var btn = document.createElement("button");
-                div1.setAttribute("class", "grid-item");
+                div1.setAttribute("class", "grid-item grid-item--height2 grid-item--width2 ");
                 div2.setAttribute("class", "row");
                 div3.setAttribute("class", "col-md-offset-1 col-md-5");
-                div4.setAttribute("class", "col-md-6");
+                div4.setAttribute("class", "col-md-12");
                 div5.setAttribute("class", "row");
-                div6.setAttribute("class", "col-md-12");
+                div6.setAttribute("class", "col-md-6");
                 img.setAttribute("class", "img-responsive img-rounded");
                 img.style.maxWidth = "100%";
                 console.log(obj[0]['img']);
                 img.src = "../images/" + obj[i]['img'];
 
-                span.setAttribute("class", "glyphicon glyphicon-question-sign");
-                btn.setAttribute("value", "Info");
-                h4.setAttribute("value", obj[i]['fName'] + " " + obj[i]['lName']);
-                btn.appendChild(span);
-                div6.appendChild(btn);
+                //modal attibutes
+
+                img2.setAttribute("class", "img-responsive img-rounded");
+                img2.style.maxWidth = "100%";
+                console.log(obj[0]['img']);
+                img2.src = "../images/" + obj[i]['img'];
+                var imgM = document.getElementById("modalM");
+                imgM.appendChild(img2);
+                var h4m = document.getElementById("modalName");
+                h4m.innerHTML = obj[i]['fName'] + " " + obj[i]['lName'];
+                if (type == 'Teacher') {
+                    var email = document.getElementById("modalEmail");
+                    email.innerHTML = obj[0]['email'];
+                    var admissionDate = document.getElementById();
+                    admissionDate.innerHTML = obj[0]['admission_date'];
+                    var user = document.getElementById();
+                    user.innerHTML = obj[0]['username'];
+                }
+
+
+
+                btn.setAttribute("class", "btn btn-primary btn-lg glyphicon glyphicon-question-sign")
+                btn.innerHTML = "Info";
+                btn.setAttribute("data-target", ".bs-example-modal-lg");
+                btn.setAttribute("data-toggle", "modal");
+                h4.innerHTML = obj[i]['fName'] + " " + obj[i]['lName'];
+
+                div6.appendChild(h4);
+
+
                 div5.appendChild(div6);
                 div3.appendChild(img);
                 div4.appendChild(div5);
-
+                div4.appendChild(btn);
                 div2.appendChild(div3);
                 div2.appendChild(div4);
                 div1.appendChild(div2);
