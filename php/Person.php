@@ -9,7 +9,7 @@ class Person{
         $connection = new Connection();
         $conn = $connection->getConnection();
         $query = "insert into person (first_name,last_name,id_person,username,pass,email,admission_date,type_user,gender,img_name)
-                 values ('$fName','$lName',$id,'$user','$pass','$email','$admission','$typeUser','$gender','teddy.png');";
+                 values ('$fName','$lName',$id,'$user','$pass','$email','$admission','$typeUser','$gender',$id);";
                  echo $query;
         $result = pg_query($conn, $query) or die("Consult Error");
         //Gets the user info that we just inserted
@@ -189,28 +189,25 @@ class Person{
     function getMyFriends(){
         $connection = new Connection();
         $conn = $connection->getConnection();
-        $arr = [];
         $activeUser =$_SESSION["rowUser"];
         $id = $activeUser['id'];
-        $query =  "select p.last_name,p.first_name,p.username,p.email,p.admission_date,p.id_person from            person p inner join friend f  on p.id_person = f.id_user2
+        $query =  "select p.last_name,p.first_name,p.username,p.email,p.admission_date,p.id_person,p.img_name from            person p inner join friend f  on p.id_person = f.id_user2
                    where f.id_user1 = '$id' and f.friends = 1";
         $result = pg_query($conn, $query) or die ("Error while getting User Type");
+        $myF_arr = [];
         while($row = pg_fetch_assoc($result)) {
-            $myF_arr = [];
-            $id = $row['id_person'];
             array_push($myF_arr , array('fName'=>($row['first_name']),
                                         'username'=>($row['username']),
                                         'img'=>($row['img_name']),
-                                        'email'=>($row2['email']),                               'admissionDate'=>($row['admission_date']),
-                                        'id'=>($row['admission_date']),
+                                        'email'=>($row['email']),                               'admissionDate'=>($row['admission_date']),
+                                        'id'=>($row['id_person']),
                                         'lName'=>($row['last_name'])
                                        )
                       );
             }
             //Create the JSON ARrray
-            $arr[] = $myF_arr;
-        }
-        echo json_encode($arr);
+
+        echo json_encode($myF_arr);
     }
 
     //remove a user
@@ -236,7 +233,7 @@ $person = new Person();
 
 
 if($_REQUEST['action'] == 'getfriends'){
-    $person->getMyFriends($_REQUEST['name']);
+    $person->getMyFriends();
 }
 if($_REQUEST['action'] == 'get'){
     $person->getPersons();

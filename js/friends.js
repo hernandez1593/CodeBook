@@ -75,20 +75,58 @@ function loadSearchedUsers(name) {
 
 function loadMyFriends() {
     var xhttp = new obtenerXHR();
-    console.log(name);
+    console.log("changa");
     xhttp.open("GET", "../php/Person.php?action=getfriends", true);
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState == 4 && xhttp.status == 200) {
-            //Space to insert divs and shit
-            console.log('Inserted here');
+
+
             var space = document.getElementById('add-friend');
-            //var respuestaJSON = xhttp.responseText;
-            console.log(xhttp.responseText);
-            //var respuestaJSON = JSON.parse(xhttp.responseText);
-            //console.log(typeof(respuestaJSON));
-            //console.log(respuestaJSON);
-            //var obj = JSON.parse(respuestaJSON);
-            var obj = eval('(' + xhttp.responseText + ')'); // Se evalua la respuesta del JSON
+            var obj = eval('(' + xhttp.responseText + ')');
+            console.log(obj);
+            $('friend-list').empty();
+            for (var i = 0; i < obj.length; i++) {
+                var div1 = document.createElement("div");
+                var div2 = document.createElement("div");
+                var div3 = document.createElement("div");
+                var div4 = document.createElement("div");
+                var div5 = document.createElement("div");
+                var div6 = document.createElement("div");
+                var img = document.createElement("img");
+                var h4 = document.createElement("h4");
+                var span = document.createElement("span");
+                var btn = document.createElement("button");
+                div1.setAttribute("class", "grid-item");
+                div2.setAttribute("class", "row");
+                div3.setAttribute("class", "col-md-offset-1 col-md-5");
+                div4.setAttribute("class", "col-md-6");
+                div5.setAttribute("class", "row");
+                div6.setAttribute("class", "col-md-12");
+                img.setAttribute("class", "img-responsive img-rounded");
+                img.style.maxWidth = "100%";
+                console.log(obj[0]['img']);
+                img.src = "../images/" + obj[i]['img'];
+
+                span.setAttribute("class", "glyphicon glyphicon-question-sign");
+                btn.setAttribute("value", "Info");
+                h4.setAttribute("value", obj[i]['fName'] + " " + obj[i]['lName']);
+                btn.appendChild(span);
+                div6.appendChild(btn);
+                div5.appendChild(div6);
+                div3.appendChild(img);
+                div4.appendChild(div5);
+
+                div2.appendChild(div3);
+                div2.appendChild(div4);
+                div1.appendChild(div2);
+                div1.appendChild(div5);
+
+                $('#my-friends').append(div1);
+
+
+
+
+            }
 
 
 
