@@ -69,7 +69,11 @@
                             </li>
                             <li>
                                 <a onclick="onNavigtionClick('Posts')"><i class="fa fa-fw fa-bar-chart-o"></i>Posts</a>
-                            </li>
+
+
+<script>
+
+</script>                      </li>
                             <li>
                                 <a onclick="onNavigtionClick('Friends')"><i class="fa fa-fw fa-table"></i> Friends</a>
                             </li>
@@ -96,6 +100,7 @@
         <script src="../js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/Profile.js"></script>
         <script src="../js/friends.js" text="text/javascript"></script>
+        <script src="../js/myPublications.js" text="text/javascript"></script>
     </body>
 
     </html>

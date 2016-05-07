@@ -94,16 +94,15 @@ class Publication{
             //Get user id
             $rowUser = $_SESSION["rowUser"];
             $id_person = $rowUser['id'];
-            echo $id_person;
             //Get all my friends posts
             $query = "select pg.language_name,pub.publication_name,pub.description,pub.code from person p inner join publication pub  on p.id_person = pub.id_person inner join program_language pg on pub.id_language = pg.id_language
             where p.id_person = '$id_person'";
-            echo $query;
+
             $result = pg_query($conn, $query) or die("Consult Error");
             //Create JSON
             while($row = pg_fetch_assoc($result)) {
                 //Create the JSON ARrray
-                array_push($arr[] , array('language_name'=>$row['language_name'],
+                array_push($arr, array('language_name'=>$row['language_name'],
                             'publication_name'=>$row['publication_name'],
                             'description'=>$row['description'],
                             'code'=>$row['code']
