@@ -213,16 +213,16 @@
     </div>
     <div class="col-md-4 ">
         <div class = "row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-1" syle="position:absolute;">
             <p><?php echo $routeImage;?></p>
                 <form id="form-image"method="post" action="../php/uploadImg.php">
-                    <div id="input" class="button changeImgButton center" onclick="getFile()">Seleccione una foto</div>
+                    <div id="input" class="button changeImgButton center" onclick="getFile()">Change profile picture</div>
                     <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
                         <input name='imagen' id="upfile" type="file" value="upload" onchange="uploadImage();"/>
                     </div>
                 </form>
         </div>
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-1">
             <div class="row">
                 <div class="col-md-12">
                     <button type="submit" id="save_changes" style="width:100%;" class="fsSubmitButton hide-me">Save edited  options</button>
@@ -231,7 +231,7 @@
         </div>
 
         </form>
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-1">
             <div class="row">
                 <div class="col-md-12">
                         <button id="edit_profile" style="width:100%; "onclick="return showAll();" class="fsSubmitButton">Edit profile settings</button>
@@ -241,7 +241,7 @@
         </div>
     </div>
 </div>
-<hr>
+<hr class="hr-style">
         <!-- /.row -->
 
 <div class="row">
@@ -251,9 +251,9 @@
                 <form role="form">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group">
+                            <div class="form-group scrollingDiv">
                                 <h2>New post</h2>
-                                <textarea class="form-control" rows="30"></textarea>
+                                <textarea class="form-control" style="resize: none; " rows="30"></textarea>
                             </div>
                         </div>
                     </div>
@@ -266,7 +266,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="col-md-12">
-                                    <div id="input" class="post-button center" onclick="getFile()">Seleccione una foto</div>
+                                    <div id="input" class="post-button center" onclick="getFile()">Load an archive</div>
                                     <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
                                         <input name='imagen' id="upfile" type="file" value="upload" onchange="uploadImage();"/>
                                     </div>
@@ -276,17 +276,31 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-4 pubsHere">
+            <div class="col-md-3">
                 <div class="row">
                     <div class="col-md-12">
-                        <h2>Chat</h2>
-                        <div class="panel panel-info">
-                            <div class="panel-body box">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <h4 class="center">Chat conversations go here</h4>
-                                        <hr>
+                        <div class="row">
+                            <h2>Chat</h2>
+                            <div class="panel panel-info">
+                                <div class="panel-body box">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4 class="center">Chat conversations go here</h4>
+                                            <hr >
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-8">
+                                    <textarea style="resize: none; " class="form-control" rows="3" style="width=100px;"></textarea>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <button type="submit" class="post-button btn-block" style="width:100%;height:100%;">Send</button>
+
                                 </div>
                             </div>
                         </div>
@@ -294,14 +308,24 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <h2></h2>
-                </div>
-            </div>
-        </div>
     </div>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <p></p>
+</div>
+<div class="row">
+    <footer class="footer">
+                <div class="row">
+                </h2>This website was created by Yorbi Mendez Soto and Alejandro Hernandez</h3>
+                </h2>@Copy right reserved</h3>
+                </div>
+    </footer>
 </div>
 
 <?php

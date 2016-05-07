@@ -89,9 +89,6 @@
                     <!-- Page Content here -->
                 </div>
             </div>
-            <div id="footer">
-                Copyright © W3Schools.com
-            </div>
         </div>
 
         <!-- Scripts here -->
