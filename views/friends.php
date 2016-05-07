@@ -10,10 +10,16 @@
         $rowUser = $_SESSION["rowUser"];
         $nombre = $rowUser['fName'];
         $type = $rowUser['typeUser'];
+        $id = $rowUser['id'];
 
 
 ?>
-   <label class="hidden" id="ninja"><?php echo $type; ?></label>
+    <label class="hidden" id="ninja">
+        <?php echo $type; ?>
+    </label>
+    <label class="hidden" id="ninja2">
+
+    </label>
     <div class="row">
         <div class="col-md-12">
             <h2>Mis amigos</h2>
@@ -28,6 +34,8 @@
                     <div class="col-md-6">
                         <div id="modalM" class="col-md-3">
 
+                                    <img id="img2" class="img-responsive img-rounded" max-width="100%" src="../images/teddy.png" >
+
                         </div>
 
                     </div>
@@ -39,7 +47,7 @@
 
                     </div>
                     <div class="col-md-6">
-                        <h4 id="modal"></h4>
+                        <h4 id="modalAdd"></h4>
                     </div>
                     <div class="col-md-6">
                         <div id="modalM" class="col-md-3">
@@ -48,7 +56,7 @@
 
                     </div>
                     <div class="col-md-6">
-                        <h4 id="modalName"></h4>
+                        <h4 id="modalUser"></h4>
                     </div>
                 </div>
             </div>

@@ -266,6 +266,77 @@ class Person{
         echo json_encode($myF_arr);
     }
 
+
+    function insertFriend(){
+        $connection = new Connection();
+        $conn = $connection->getConnection();
+        $activeUser =$_SESSION["rowUser"];
+        $id = $activeUser['id'];
+        $query =  "select p.last_name,p.first_name,p.username,p.email,p.admission_date,p.id_person,p.img_name from            person p inner join friend f  on p.id_person = f.id_user2
+                   where f.id_user1 = '$id' and f.friends = 1";
+        $result = pg_query($conn, $query) or die ("Error while getting User Type");
+        $myF_arr = [];
+        while($row = pg_fetch_assoc($result)) {
+            array_push($myF_arr , array('fName'=>($row['first_name']),
+                                        'username'=>($row['username']),
+                                        'img'=>($row['img_name']),
+                                        'email'=>($row['email']),                               'admissionDate'=>($row['admission_date']),
+                                        'id'=>($row['id_person']),
+                                        'lName'=>($row['last_name'])
+                                       )
+                      );
+            }
+            //Create the JSON ARrray
+
+        echo json_encode($myF_arr);
+    }
+
+     function sendFriend($id){
+        $connection = new Connection();
+        $conn = $connection->getConnection();
+        $activeUser =$_SESSION["rowUser"];
+        $id = $activeUser['id'];
+        $query =  "select p.last_name,p.first_name,p.username,p.email,p.admission_date,p.id_person,p.img_name from            person p inner join friend f  on p.id_person = f.id_user2
+                   where f.id_user1 = '$id' and f.friends = 1";
+        $result = pg_query($conn, $query) or die ("Error while getting User Type");
+        $myF_arr = [];
+        while($row = pg_fetch_assoc($result)) {
+            array_push($myF_arr , array('fName'=>($row['first_name']),
+                                        'username'=>($row['username']),
+                                        'img'=>($row['img_name']),
+                                        'email'=>($row['email']),                               'admissionDate'=>($row['admission_date']),
+                                        'id'=>($row['id_person']),
+                                        'lName'=>($row['last_name'])
+                                       )
+                      );
+            }
+            //Create the JSON ARrray
+
+        echo json_encode($myF_arr);
+    }($id){
+        $connection = new Connection();
+        $conn = $connection->getConnection();
+        $activeUser =$_SESSION["rowUser"];
+        $id = $activeUser['id'];
+        $query =  "select p.last_name,p.first_name,p.username,p.email,p.admission_date,p.id_person,p.img_name from            person p inner join friend f  on p.id_person = f.id_user2
+                   where f.id_user1 = '$id' and f.friends = 1";
+        $result = pg_query($conn, $query) or die ("Error while getting User Type");
+        $myF_arr = [];
+        while($row = pg_fetch_assoc($result)) {
+            array_push($myF_arr , array('fName'=>($row['first_name']),
+                                        'username'=>($row['username']),
+                                        'img'=>($row['img_name']),
+                                        'email'=>($row['email']),                               'admissionDate'=>($row['admission_date']),
+                                        'id'=>($row['id_person']),
+                                        'lName'=>($row['last_name'])
+                                       )
+                      );
+            }
+            //Create the JSON ARrray
+
+        echo json_encode($myF_arr);
+    }
+
     //remove a user
     function removePerson(){
         $connection = new Connection();
@@ -339,6 +410,14 @@ class Person{
 
 $person = new Person();
 
+
+if($_REQUEST['action'] == 'pendingfriends'){
+    $person->pendingFriend();
+}
+
+if($_REQUEST['action'] == 'sendfriends'){
+    $person->insertFriend();
+}
 
 if($_REQUEST['action'] == 'getfriends'){
     $person->getMyFriends();
