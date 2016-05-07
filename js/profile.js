@@ -30,4 +30,40 @@ function carga(url,id)
 }
 
 
-carga('profile.php','contentX');
+function hideAll(){
+    $('.edit').removeClass('show-me').addClass('hide-me');
+}
+
+function showAll(){
+    $('.edit').removeClass('hide-me').addClass('show-me');
+}
+
+function saveChanges(){
+    var fname = document.getElementById('first_name');
+    var lname = document.getElementById('last_name');
+    var gender = document.getElementById('selectGender').innerHTML;
+    var id = document.getElementById('id_person');
+    var userame = document.getElementById('username');
+    var email = document.getElementById('email');
+
+    if(fname=="" || lname=="" || id=="" || username=="" || email==""){
+
+    }
+}
+
+function log_out()
+{
+    location.href = "../index.php";
+}
+
+function onNavigtionClick(option){
+    if(option=="Profile"){
+        carga('Profile.php','page_content');
+    }else if(option=="Friends"){
+        carga('friends.php','page_content');
+    }
+
+}
+
+//Loads on main page load
+carga('profile.php','page_content');
