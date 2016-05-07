@@ -72,6 +72,8 @@ function onNavigtionClick(option){
         carga('Profile.php','page_content');
     }else if(option=="Friends"){
         carga('friends.php','page_content');
+    }else if(option=="Posts"){
+        carga('myPublications.php','page_content');
     }
 }
 

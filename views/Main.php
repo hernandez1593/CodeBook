@@ -68,7 +68,7 @@
                                 <a onclick="onNavigtionClick('Profile')"><i class="fa fa-fw fa-dashboard"></i>My Profile</a>
                             </li>
                             <li>
-                                <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i>Posts</a>
+                                <a onclick="onNavigtionClick('Posts')"><i class="fa fa-fw fa-bar-chart-o"></i>Posts</a>
                             </li>
                             <li>
                                 <a onclick="onNavigtionClick('Friends')"><i class="fa fa-fw fa-table"></i> Friends</a>

@@ -52,8 +52,9 @@
         Perfil
         </h1>
     </div>
+    <hr>
 </div>
-<hr>
+
 
 <div class="row scrollingDiv">
     <div class="col-md-8">
@@ -241,8 +242,10 @@
         </div>
     </div>
 </div>
+<div class="col-md-12">
 <hr class="hr-style">
-        <!-- /.row -->
+    </div>
+<!-- /.row -->
 
 <div class="row">
     <div class="col-md-12">
