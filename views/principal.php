@@ -14,9 +14,9 @@
         //$routeImage = "http://localhost/usuariosGitBook/$imageName";
 
         //echo $row['publication'];
-        $changa = "";
+        $changa = [];
         foreach($rowUser["publication"] as $pub) {
-            $changa =  $pub["publication_name"];
+            $changa.push($pub["publication_name"]);
         }
         //$changa = json_decode($rowUser['publication']);
         $company = "";
@@ -61,6 +61,7 @@
         <!-- Custom CSS -->
         <link href="../css/sb-admin.css" rel="stylesheet">
         <link href="../css/principal.css" rel="stylesheet">
+        <link href="../css/friends.css" rel="stylesheet">
         <!-- Custom Fonts -->
         <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -145,47 +146,20 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                        <ul class="dropdown-menu alert-dropdown">
-                            <li>
-                                <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">View All</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><?php echo $nombre; ?><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                                <a href="#"><i class="fa fa-fw fa-envelope"></i>Inbox</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                                <a href="#"><i class="fa fa-fw fa-power-off"></i>Log Out</a>
                             </li>
                         </ul>
                     </li>
@@ -200,7 +174,7 @@
                             <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Publicaciones</a>
                         </li>
                         <li>
-                            <a href="../views/friends.php"><i class="fa fa-fw fa-table"></i> Amigos</a>
+                            <button onclick="carga('friends.php','contenidoX')"><i class="fa fa-fw fa-table"></i> Amigos</button>
                         </li>
                         <li class="active">
                             <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
@@ -216,7 +190,7 @@
 
             <div id="content1">
 
-                <div class="contenido">
+                <div id = "contenidoX" class="contenido">
 
                     <!-- Page Heading -->
                     <div class="row indent">
@@ -428,8 +402,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                         <!-- /.row -->
