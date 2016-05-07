@@ -78,12 +78,6 @@
                             <li>
                                 <a href="#"><i class="fa fa-fw fa-desktop"></i>Programming is Fun</a>
                             </li>
-                            <li>
-                                <a href="#"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                            </li>
 
                         </ul>
                     </div>
@@ -94,6 +88,9 @@
                     <!-- Page Content here -->
                     </div>
             </div>
+            <div id="footer">
+                Copyright © W3Schools.com
+            </div>
         </div>
 
          <!-- Scripts here -->
@@ -101,7 +98,6 @@
         <script src="../js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/Profile.js"></script>
         <script src="../js/friends.js" text="text/javascript"></script>
-
     </body>
 
     </html>

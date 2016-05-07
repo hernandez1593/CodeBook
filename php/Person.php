@@ -286,12 +286,11 @@ class Person{
 
 
         //Gets the user info that we just inserted
-        $query = "select * from person where id_person = '$id'";
+        $query2 = "select * from person where id_person = '$id'";
         $result = pg_query($conn,$query);
         $row = pg_fetch_assoc($result);
         $result2 = pg_query($conn,$query2);
         $forum_arr = [];
-        $id = $row['id_person'];
         $query2 = "select id_forum, description, title from forum f inner join person p
                    on f.id_person = p.id_person
                    where p.id_person = '$id'";
@@ -333,10 +332,7 @@ class Person{
 
         $_SESSION["rowUser"] = ($arr[0]);
 
-
-
-
-        //header('Location: /webProyecto/views/Main.php');
+        header('Location: /webProyecto/views/Main.php');
     }
 
 }

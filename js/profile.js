@@ -73,7 +73,6 @@ function onNavigtionClick(option){
     }else if(option=="Friends"){
         carga('friends.php','page_content');
     }
-
 }
 
 hideAll();

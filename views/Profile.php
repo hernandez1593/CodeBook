@@ -47,29 +47,17 @@
 
 ?>
 <div class="row">
-    <div class="col-md-12">
-        <h1 class="page-header">
+    <div class="col-md-3 col-md-offset-9">
+        <h1 class="">
         Perfil
-    </h1>
+        </h1>
     </div>
 </div>
+<hr>
 
-<div class="row ">
-
-    <div class="col-md-2">
-        <div class>
-            <p><?php echo $routeImage;?></p>
-                <form id="form-image"method="post" action="../php/uploadImg.php" enctype="multipart/form-data">
-                    <div id="input" class="button changeImgButton center" onclick="getFile()">Seleccione una foto</div>
-                    <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
-                        <input name='imagen' id="upfile" type="file" value="upload" onchange="uploadImage();"/>
-                    </div>
-                </form>
-        </div>
-    </div>
-    <div class="col-md-10">
-        <div class="innter-form">
-        <form method="GET" id="editForm" action="../php/Person.php?action=edit" onsubmit="return saveChanges();" class="sa-innate-form">
+<div class="row scrollingDiv">
+    <div class="col-md-8">
+        <form method="GET" id="editForm" action="../php/Person.php?action=insert" onsubmit="return saveChanges();" class="sa-innate-form">
         <div class="row">
             <div class="col-md-10 indent">
                 <div class="row">
@@ -88,6 +76,7 @@
                                     </div>
                                     <div class="edit hide-me margin-top col-md-9 col-md-offset-2 center">
                                         <input type="text" id="last_name" placeholder="Last Name" name="lName" class="form-control margin-top">
+                                        <input class="hide-me" name='action' value="edit"/>
                                     </div>
                                 </div>
 
@@ -130,7 +119,7 @@
                                     </label>
                                 </div>
                                 <div class="edit center hide-me col-md-6 col-md-offset-3">
-                                    <input type="text"  name="user" id="user" value = "<?php echo $rowUser['id']; ?>"  class="form-control" name="id">
+                                    <input type="text" id="user" value = "<?php echo $rowUser['id']; ?>"  class="form-control" name="id">
                                 </div>
                             </div>
                         </div>
@@ -161,7 +150,7 @@
                                     </label>
                                 </div>
                                 <div class="edit center hide-me col-md-6 col-md-offset-3">
-                                    <input type="text"  name="user" id="user" placeholder="Username"text="Username" class="form-control" name="username">
+                                    <input type="text"  name="user" id="user" placeholder="Username" text="Username" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -201,8 +190,8 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
+                        <div class="panel">
+                            <div>
                                 <div class="center">
                                     <label for="generoPerfil">Admission Date: </label>
                                     <label>
@@ -220,21 +209,35 @@
 
 
         </div>
-        <div class = "row">
-            <div class="col-md-6 col-md-offset-6 margin-top">
-            <button type="submit" id="save_changes" class="fsSubmitButton hide-me">Save edited options</button>
-            </div>
-        </div>
-        </form>
-        </div>
+
     </div>
-</div>
-<div class="row">
-    <div class="col-md-10 col-md-offset-2">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-6 margin-top">
-                    <button id="edit_profile" onclick="return showAll();" class="fsSubmitButton">Edit profile settings</button>
+    <div class="col-md-4 ">
+        <div class = "row">
+        <div class="col-md-8 col-md-offset-2">
+            <p><?php echo $routeImage;?></p>
+                <form id="form-image"method="post" action="../php/uploadImg.php">
+                    <div id="input" class="button changeImgButton center" onclick="getFile()">Seleccione una foto</div>
+                    <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
+                        <input name='imagen' id="upfile" type="file" value="upload" onchange="uploadImage();"/>
+                    </div>
+                </form>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" id="save_changes" style="width:100%;" class="fsSubmitButton hide-me">Save edited  options</button>
+                </div>
             </div>
+        </div>
+
+        </form>
+        <div class="col-md-8 col-md-offset-2">
+            <div class="row">
+                <div class="col-md-12">
+                        <button id="edit_profile" style="width:100%; "onclick="return showAll();" class="fsSubmitButton">Edit profile settings</button>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
 </div>
@@ -242,51 +245,63 @@
         <!-- /.row -->
 
 <div class="row">
-
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-12">
-<!--
+            <div class="col-md-8" id="add_post">
                 <form role="form">
-
-
-                    <div class="form-group">
-                        <label>Text area</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h2>New post</h2>
+                                <textarea class="form-control" rows="30"></textarea>
+                            </div>
+                        </div>
                     </div>
-
-                    <button type="submit" class="btn btn-default">Submit Button</button>
-                    <div class="form-group">
-                        <label>File input</label>
-                        <input type="file">
-                    </div>
-
-                </form>
--->
-            </div>
-            <div class="col-md-12 pubsHere">
-                <div class="row">
-                    <div class="col-md-12 myPubs">
-                        <h2>Mis publicaciones</h2>
-                        <div class="col-md-6">
-                            <div class="panel panel-info">
-                                <div class="panel-heading">
-                                    <h3>hola </h3>
+                    <div class="row">
+                        <div class="col-md-12 margin-top">
+                            <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <button type="submit" class="post-button btn-block" style="width:100%;">Add the new post</button>
                                 </div>
-                                <div class="panel-body">
-                                    <h4></h4>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <div id="input" class="post-button center" onclick="getFile()">Seleccione una foto</div>
+                                    <div id="inputfile" style="height: 0px; width: 0px; overflow:hidden;">
+                                        <input name='imagen' id="upfile" type="file" value="upload" onchange="uploadImage();"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
-                            <h1>mensajeria</h1>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4 pubsHere">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Chat</h2>
+                        <div class="panel panel-info">
+                            <div class="panel-body box">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4 class="center">Chat conversations go here</h4>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <h2></h2>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 </div>
 
 <?php
