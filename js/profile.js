@@ -33,22 +33,32 @@ function carga(url,id)
 
 function hideAll(){
     $('.edit').removeClass('show-me').addClass('hide-me');
+    //Hides the save changes
+    $('#save_changes').removeClass('show-me').addClass('hide-me');
 }
 
 function showAll(){
     $('.edit').removeClass('hide-me').addClass('show-me');
+    $('#save_changes').removeClass('hide-me').addClass('show-me');
 }
 
 function saveChanges(){
-    var fname = document.getElementById('first_name');
-    var lname = document.getElementById('last_name');
+    var admission = document.getElementById('admission').value;
+    var pass = document.getElementById('pass').value;
+    var fname = document.getElementById('first_name').value;
+    var lname = document.getElementById('last_name').value;
     var gender = document.getElementById('selectGender').innerHTML;
-    var id = document.getElementById('id_person');
-    var userame = document.getElementById('username');
-    var email = document.getElementById('email');
+    var userame = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
 
-    if(fname=="" || lname=="" || id=="" || username=="" || email==""){
-
+    if(fname=="" || lname=="" || id=="" || username=="" || email=="" || pass=="" || admission==""){
+        alert("Empty spaces still exist");
+        //evt.preventDefault();
+        //window.history.back();
+        return false;
+    }else{
+        hideAll();
+        return true;
     }
 }
 
@@ -66,5 +76,6 @@ function onNavigtionClick(option){
 
 }
 
+hideAll();
 //Loads on main page load
 carga('Profile.php','page_content');

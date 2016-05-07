@@ -21,12 +21,18 @@
         //$changa = json_decode($rowUser['publication']);
         $company = "";
         $imageName = $rowUser['img_name'];
+        $foundImg = false;
 
         $dir = "../images/";
         if($opendir = opendir($dir)){
             while(($file = readdir($opendir)) != FALSE){
                 if($file!="." && $file!=".."){
-                    $routeImage = "<img src='$dir/$file'><br>";
+                    if($file == $imageName){
+                        $foundImg = true;
+                        $routeImage = "<img src='$dir/$file' class='img-responsive'><br>";
+                    }
+                    else if($foundImg == false)
+                        $routeImage = "<img src='$dir/$file' class='img-responsive'><br>";
                 }
             }
         }
@@ -62,7 +68,8 @@
         </div>
     </div>
     <div class="col-md-10">
-        <form action="">
+        <div class="innter-form">
+        <form method="GET" id="editForm" action="../php/Person.php?action=edit" onsubmit="return saveChanges();" class="sa-innate-form">
         <div class="row">
             <div class="col-md-10 indent">
                 <div class="row">
@@ -77,10 +84,10 @@
                                 </div>
                                 <div>
                                     <div class = "edit hide-me col-md-9 col-md-offset-2 center">
-                                            <input type="text" id="first_name" placeholder="First Name" class="form-control" name="first_name">
+                                            <input type="text" id="first_name" placeholder="First Name" class="form-control" name="fName">
                                     </div>
                                     <div class="edit hide-me margin-top col-md-9 col-md-offset-2 center">
-                                        <input type="text" id="last_name" placeholder="Last Name" name="last_name" class="form-control margin-top">
+                                        <input type="text" id="last_name" placeholder="Last Name" name="lName" class="form-control margin-top">
                                     </div>
                                 </div>
 
@@ -120,11 +127,10 @@
                                     <label for="identification">Identification: </label>
                                     <label name="identification">
                                         <?php echo $rowUser['id']; ?>
-
                                     </label>
                                 </div>
-                                <div class="edit hide-me margin-top col-md-6 col-md-offset-3">
-                                        <input type="text" id="id_person" placeholder="Identification" name="id_person" class="form-control margin-top">
+                                <div class="edit center hide-me col-md-6 col-md-offset-3">
+                                    <input type="text"  name="user" id="user" value = "<?php echo $rowUser['id']; ?>"  class="form-control" name="id">
                                 </div>
                             </div>
                         </div>
@@ -155,7 +161,7 @@
                                     </label>
                                 </div>
                                 <div class="edit center hide-me col-md-6 col-md-offset-3">
-                                    <input type="text"  id="username" placeholder="Username"text="Username" class="form-control" name="username">
+                                    <input type="text"  name="user" id="user" placeholder="Username"text="Username" class="form-control" name="username">
                                 </div>
                             </div>
                         </div>
@@ -177,22 +183,59 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-10 indent">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel panel-default ">
+                            <div class="panel-body">
+                                <div class="center">
+                                    <label for="pass">Password: </label>
+                                    <label id="pass">
+                                        <?php echo md5($rowUser['pass']); ?>
+                                    </label>
+                                </div>
+                                <div class="edit hide-me col-md-6 col-md-offset-3">
+                                    <input type="text" id="pass" placeholder="pass" class="form-control" name="pass">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="center">
+                                    <label for="generoPerfil">Admission Date: </label>
+                                    <label>
+                                        <?php echo $rowUser['admission_date']; ?>
+                                    </label>
+                                </div>
+                                <div class="edit hide-me col-md-6 col-md-offset-3">
+                                    <input type="text" id="admission" placeholder="Admission Date" class="form-control" name="admission">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
         </div>
+        <div class = "row">
+            <div class="col-md-6 col-md-offset-6 margin-top">
+            <button type="submit" id="save_changes" class="fsSubmitButton hide-me">Save edited options</button>
+            </div>
+        </div>
         </form>
+        </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-6 col-md-offset-6 margin-top">
-        <button onclick="return showAll();" class="fsSubmitButton">Edit profile settings</button>
-        <button onclick="return hideAll();" class="fsSubmitButton">Save edited options</button>
-    </div>
-</div>
-<div class="row hide-me">
-    <div class="col-md-6 col-md-offset-6 margin-top">
-        <button onclick="return showAll();" class="fsSubmitButton">Edit profile settings</button>
-        <button onclick="return hideAll();" class="fsSubmitButton">Save edited options</button>
+    <div class="col-md-10 col-md-offset-2">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6 margin-top">
+                    <button id="edit_profile" onclick="return showAll();" class="fsSubmitButton">Edit profile settings</button>
+            </div>
+        </div>
     </div>
 </div>
 <hr>
@@ -200,7 +243,7 @@
 
 <div class="row">
 
-    <div class="col-md-11">
+    <div class="col-md-12">
         <div class="row">
             <div class="col-md-12">
 <!--
