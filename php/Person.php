@@ -184,6 +184,33 @@ class Person{
         echo json_encode($arr);
     }
 
+    //Gets all friends of a user
+    function getMyFriends(){
+        $connection = new Connection();
+        $conn = $connection->getConnection();
+        $arr = [];
+        $activeUser =$_SESSION["rowUser"];
+        $query =  "select p.last_name,p.first_name,p.username,p.email,p.admission_date,p.id_person from            person p inner join friend f  on p.id_person = f.id_user2
+                   where f.id_user1 = $id and f.friends = 1";
+        $result = pg_query($conn, $query) or die ("Error while getting User Type");
+        while($row = pg_fetch_assoc($result)) {
+            $myF_arr = [];
+            $id = $row['id_person'];
+            array_push($myF_arr , array('fName'=>($row['first_name']),
+                                        'username'=>($row['username']),
+                                        'email'=>($row2['email']),                               'admissionDate'=>($row['admission_date']),
+                                        'id'=>($row['admission_date']),
+                                        'lName'=>($row['last_name'])
+                                       )
+                      );
+            }
+            //Create the JSON ARrray
+            $arr[] = $myF_arr;
+        }
+        echo json_encode($arr);
+    }
+
+
     //remove a user
     function removePerson($id){
         $connection = new Connection();
@@ -205,6 +232,10 @@ class Person{
 
 $person = new Person();
 
+
+if($_REQUEST['action'] == 'getfriends'){
+    $person->getMyFriends($_REQUEST['name']);
+}
 if($_REQUEST['action'] == 'get'){
     $person->getPersons();
 }
